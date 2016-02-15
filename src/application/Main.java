@@ -19,8 +19,8 @@ public class Main extends Application {
 	    Scene scene = new Scene(pane);
 	    
 	    // setting the stage
-	    primaryStage.setScene( scene );
-	    primaryStage.setTitle( "Hello World Demo" );
+	    primaryStage.setScene(scene);
+	    primaryStage.setTitle( "Macys Helper" );
 	    primaryStage.show();
 	  }
 	

@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MacysController">
+   <children>
+      <Label layoutX="72.0" layoutY="56.0" text="Macys Helper" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Button fx:id="testButton" layoutX="152.0" layoutY="434.0" mnemonicParsing="false" onAction="#testAction" text="Test">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TextField fx:id="testTF" layoutX="68.0" layoutY="281.0" style="-fx-background-color: Red;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+   </children>
 </AnchorPane>
-
