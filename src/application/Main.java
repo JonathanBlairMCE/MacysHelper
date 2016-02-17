@@ -20,9 +20,9 @@ public class Main extends Application {
 	    
 	    // setting the stage
 	    primaryStage.setScene(scene);
-	    primaryStage.setTitle( "Macys Helper" );
+	    primaryStage.setTitle("Macys Helper");
 	    primaryStage.show();
-	  }
+	}
 	
 	public static void main(String[] args) {
 		launch(args);
