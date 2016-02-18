@@ -48,6 +48,12 @@ public class Main extends Application {
             new EmployeeLogin().start(window);
         } catch (Exception e) {}
     }
+    
+    public void goToMain() {
+        try{
+            new Main().start(window);
+        } catch (Exception e) {}
+    }
 
 	@FXML
     private TextField testTF;
@@ -57,6 +63,9 @@ public class Main extends Application {
 
     @FXML
     private Button getHelpButton;
+    
+    @FXML
+    private Button employeeLoginButton;
 
     @FXML
     void testAction(ActionEvent event) {

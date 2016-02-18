@@ -1,5 +1,6 @@
 package application;
 
+import application.*;
 import application.DAL.*;
 import application.Domain.*;
 import java.io.IOException;
@@ -36,6 +37,14 @@ public class BookAppointment extends Application {
 		    FXCollections.observableArrayList(
 		    		"1",
 		    		"2"
+		    );
+	
+	ObservableList<String> dpts = 
+		    FXCollections.observableArrayList(
+		    		"Mens",
+		    		"Furniture",
+		    		"Womens",
+		    		"Fragrances"
 		    );
 		    		
 	ObservableList<String> times = 
@@ -97,7 +106,7 @@ public class BookAppointment extends Application {
     private ComboBox<Double> ddBudget;
 
     @FXML
-    private ComboBox<?> ddDepartment;
+    private ComboBox<String> ddDepartment;
 
     @FXML
     private TextField tfName;
@@ -125,6 +134,9 @@ public class BookAppointment extends Application {
 
     @FXML
     private DatePicker dtDate;
+    
+    @FXML
+    private Button backButon;
 
     @FXML
     private Label lbBudget;
@@ -152,7 +164,7 @@ public class BookAppointment extends Application {
 		window = primaryStage;
 		
 	    // constructing our scene
-	    URL url = getClass().getResource("BookAppointment.fxml");
+	    URL url = getClass().getResource("BookAppointments.fxml");
 	    AnchorPane pane = FXMLLoader.load(url);
 	    Scene BookAppointment = new Scene(pane);
 	    
@@ -174,6 +186,7 @@ public class BookAppointment extends Application {
 		//int[] floors = SQLRequests.GetFloors(14);
 		//floor = FXCollections.observableArrayList(floors);
 		ddFloor.setItems(floor);
+		ddDepartment.setItems(dpts);
 	}
 	
     @FXML
@@ -206,11 +219,20 @@ public class BookAppointment extends Application {
     	newCustomer.Name = tfName.getText();
     	newCustomer.Gender = (String) ddGender.getValue();
     	//newCustomer.Floor = (int) ddFloor.getValue();
+    	newCustomer.Floor = 1;
     	newCustomer.Department = (String) ddDepartment.getValue();
     	newCustomer.SearchItems = taLookingFor.getText();
     	newCustomer.CustomerDescription = taSelfDescription.getText();
     	
     	if (!(tgAppointment.isSelected())) {
+    		SQLRequests.Submission(newCustomer);
+    	}
+    	else if (!(tgPreselection.isSelected())) {
+    		
+    		SQLRequests.Submission(newCustomer);
+    	}
+    	else {
+    		
     		SQLRequests.Submission(newCustomer);
     	}
     	
@@ -232,6 +254,13 @@ public class BookAppointment extends Application {
     		lbBudget.setVisible(false);
     		lbBodyType.setVisible(false);
     	}
+    }
+    
+    @FXML
+    void goBack(ActionEvent event) {
+    	try{
+            new Main().start(window);
+        } catch (Exception e) {}
     }
 
 }

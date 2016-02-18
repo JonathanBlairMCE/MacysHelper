@@ -78,5 +78,6 @@
          </font>
       </Label>
       <ToggleButton fx:id="tgPreselection" layoutX="19.0" layoutY="501.0" mnemonicParsing="false" onAction="#outfitPreselection" prefHeight="25.0" prefWidth="322.0" text="Outfit preselection" visible="false" />
+      <Button fx:id="backButon" alignment="CENTER" layoutX="298.0" layoutY="9.0" mnemonicParsing="false" onAction="#goBack" prefHeight="27.0" prefWidth="54.0" style="-fx-background-color: RED; -fx-border-width: 1; -fx-border-color: BLACK;" text="Back" textAlignment="CENTER" />
    </children>
 </AnchorPane>
