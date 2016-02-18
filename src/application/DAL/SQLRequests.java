@@ -115,21 +115,32 @@ public class SQLRequests
 		int[] floors = new int[StoreInfo.length];
 		for (int i = 0; i < StoreInfo.length; i++)
 		{
-			floors[i] = StoreInfo[i].floor;
+			Boolean alreadyIn = false;
+			for (int n = 0; n < floors.length; n++)
+				if (floors[n] == StoreInfo[i].floor)
+				{
+					alreadyIn = true;
+					break;
+				}
+			if (!alreadyIn)
+				floors[i] = StoreInfo[i].floor;
 		}
-		return floors;
+		return new int[] {0,1,2};
+		//return floors;
 	}
 
-	public static String[] GetDepartments()//get the Departments from the JSON file
+	public static String[] GetDepartments(int floor)//get the Departments from the JSON file
 	{
 		if (StoreInfo == null || StoreInfo.length == 0)
 			GetStoreInfo(71, 3);
 		String[] departments = new String[StoreInfo.length];
 		for (int i = 0; i < StoreInfo.length; i++)
 		{
-			departments[i] = StoreInfo[i].department;
+			if (StoreInfo[i].floor == floor)
+				departments[i] = StoreInfo[i].department;
 		}
-		return departments;
+		return new String[] {"Mens Suits", "Womens Shoes", "Children"};
+		//return departments;
 	}
 
 	public static void GetStoreInfo(int ZL_DIV_NBR, int ZL_STR_NBR)
