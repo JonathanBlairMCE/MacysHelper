@@ -56,8 +56,8 @@ public class SQLRequests
 
 	public static Boolean DoRefresh()
 	{
-		if (GetCustomerFromQueue(Customer_Customer.ID) != null && GetCustomerFromQueue(Customer_Customer.ID).ID != 0)
-			return false;
+		//if (GetCustomerFromQueue(Customer_Customer.ID) != null && GetCustomerFromQueue(Customer_Customer.ID).ID != 0)
+		//	return false;
 		return true;
 	}
 
