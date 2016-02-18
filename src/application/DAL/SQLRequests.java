@@ -163,42 +163,44 @@ public class SQLRequests
 
 	}
 
-	public static Customer[] GetCustomersSQL()//2nd
+	public static Customer[] GetCustomersSQL()//2nd populate rows with the customer data
 	{
 
 		return new Customer[] {};
 	}
+	
 	public static Boolean SQLRequest(String SQLString)//1st: create the connection to
 	{
-		 Connection con = null; 
-		 String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-		  try{
-		  Class.forName(driver).newInstance();
-		  con = DriverManager.getConnection(SQL_SERVER_CONNECTION_STRING);
-		  Statement st = con.createStatement();
-		  ResultSet res = st.executeQuery("SELECT * FROM dbo.ANDREW_CustomerDB");
-		  res.next();
-		  System.out.println(res);
-		  //return res.getString("Name");
-		  //con.close();
-		  }
-		  catch (SQLException s){
-			  s.printStackTrace();
-		  System.out.println("SQL code does not execute.");
-		  }  
-		  catch (Exception e){
-		  e.printStackTrace();
-		  }
-		finally {
-		try {
-			con.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		Connection con = null; 
+		String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+		try{
+			Class.forName(driver).newInstance();
+			con = DriverManager.getConnection(SQL_SERVER_CONNECTION_STRING);
+			Statement st = con.createStatement();
+			ResultSet res = st.executeQuery(SQLString);
+			res.next();
+			System.out.println(res);
+			//return res.getString("Name");
+			//con.close();
+			return true;
+		}
+		catch (SQLException s){
+			s.printStackTrace();
+			System.out.println("SQL code does not execute.");
+		}  
+		catch (Exception e){
 			e.printStackTrace();
 		}
+		finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		 
-		return true;	
+
+		return false;	
 	}
     
 }

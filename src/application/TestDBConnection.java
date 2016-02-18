@@ -20,7 +20,7 @@ public class TestDBConnection {
 		  Statement st = con.createStatement();
 		  ResultSet res = st.executeQuery("SELECT * FROM dbo.ANDREW_CustomerDB");
 		  res.next();
-		  System.out.println(res);
+		  System.out.println(res.getString("Name"));
 		  //return res.getString("Name");
 		  //con.close();
 		  }
