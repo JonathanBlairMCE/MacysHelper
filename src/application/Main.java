@@ -1,6 +1,7 @@
 package application;
-	
+
 import java.io.IOException;
+import application.Domain.*;
 import java.net.URL;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+<<<<<<< HEAD
     static Stage window;
 	
 	@Override
@@ -25,12 +27,22 @@ public class Main extends Application {
 	    AnchorPane pane = FXMLLoader.load(url);
 	    Scene Main = new Scene(pane);
 	    
+=======
+	@Override
+	public void start(Stage primaryStage) throws IOException {
+
+	    // constructing our scene
+	    URL url = getClass().getResource("Index.fxml");
+	    AnchorPane pane = FXMLLoader.load(url);
+	    Scene scene = new Scene(pane);
+
+>>>>>>> origin/master
 	    // setting the stage
 	    window.setScene(Main);
 	    window.setTitle("Macys Helper");
 	    window.show();
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
