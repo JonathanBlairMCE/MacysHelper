@@ -15,17 +15,7 @@
             <Font name="Calibri Bold" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="testButton" alignment="CENTER" layoutX="151.0" layoutY="345.0" mnemonicParsing="false" onAction="#testAction" style="-fx-background-color: RED; -fx-border-width: 1; -fx-border-color: BLACK;" text="Test" textAlignment="CENTER">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <TextField fx:id="testTF" layoutX="67.0" layoutY="279.0" style="-fx-background-color: Red; -fx-border-color: BLACK;">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <Button fx:id="getHelpButton" alignment="CENTER" layoutX="132.0" layoutY="493.0" mnemonicParsing="false" onAction="#getHelp" style="-fx-background-color: RED; -fx-border-width: 1; -fx-border-color: BLACK;" text="Get Help" textAlignment="CENTER">
+      <Button fx:id="getHelpButton" alignment="CENTER" layoutX="132.0" layoutY="270.0" mnemonicParsing="false" onAction="#getHelp" style="-fx-background-color: RED; -fx-border-width: 1; -fx-border-color: BLACK;" text="Get Help" textAlignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>
