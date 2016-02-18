@@ -3,11 +3,12 @@ import application.Domain.Customer;
 
 public class SQLRequests
 {
-	public static final String TABLE_NAME = "dbo.ANDREW_CustomerDB"; //customer table 
+	public static final String TABLE_NAME = "dbo.ANDREW_CustomerDB"; //customer table
 	public static final String LOCATION_TABLE = "dbo.SLLNG_ZN";//selling zone table
 	public static Customer Customer_Customer = new Customer();
 	public static Customer Employee_Customer = new Customer();
-	public static String SQL_SERVER_CONNECTION_STRING = "jdbc:sqlserver://MT000XSSQL94;databaseName=SPManager;user=slfadmin;password=spmdadmin;";
+	public static final String SQL_SERVER_CONNECTION_STRING = "jdbc:sqlserver://MT000XSSQL94;databaseName=SPManager;user=slfadmin;password=spmdadmin;";
+	public static Customer[] Queue = new Customer[]{};
 
 	public static Boolean ADSecurityAuthenticate(String password, String username)
 	{
@@ -58,8 +59,24 @@ public class SQLRequests
 
 	public static Customer FullApptDetails(int Cust_ID)
 	{
-
+		for (int i = 0; i < Queue.length; i++)
+		{
+			if (Queue[i].ID == Cust_ID)
+				return Queue[i];
+		}
 		return new Customer();
+	}
+
+	public static int[] GetFloors(int store)
+	{
+
+		return new int[] {};
+	}
+
+	public static String[] GetDepartments()
+	{
+
+		return new String[]{};
 	}
 
 	public static void SaveInputFields()
@@ -73,7 +90,7 @@ public class SQLRequests
 		return new Customer[] {};
 	}
 
-	public static Boolean SQLRequest(String SQLString)//1st: create the connection to  
+	public static Boolean SQLRequest(String SQLString)//1st: create the connection to
 	{
 
 		return true;
