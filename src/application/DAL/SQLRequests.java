@@ -82,6 +82,14 @@ public class SQLRequests
 		return SQLRequest(SQLString);
 	}
 
+	//TODO
+	public static void LoadQueue()
+	{
+		String SQLString = "SELECT * FROM " + TABLE_NAME;
+
+		Queue = new Customer[] {};
+	}
+
 	//done
 	public static Boolean CancelAppointment()
 	{
@@ -137,21 +145,20 @@ public class SQLRequests
 
 	}
 
-	public static void LoadQueue()//2nd
+	public static Customer[] GetCustomersSQL()//2nd
 	{
-		String SQLString = "SELECT * FROM " + TABLE_NAME;
 
-		//Queue = GetCustomersSQL();
-		//return new Customer[] {};
+		return new Customer[] {};
 	}
 
 	public static Boolean SQLRequest(String SQLString)//1st: create the connection to
 	{
 		try
         {
+			 Statement stm = null;
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             Connection con = DriverManager.getConnection(SQL_SERVER_CONNECTION_STRING);
-            Statement stm = con.createStatement();
+            stm = con.createStatement();
             ResultSet rs = stm.executeQuery("SELECT * FROM dbo.ANDREW_CustomerDB");
             String[] result = new String[20];
             if(rs!=null){
