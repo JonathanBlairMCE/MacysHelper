@@ -36,7 +36,7 @@
          <content>
             <ListView fx:id="nameList" prefHeight="364.0" prefWidth="310.0" />
          </content></ScrollPane>
-      <ImageView fx:id="imageView" fitHeight="90.0" fitWidth="160.0" layoutX="91.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView" fitHeight="90.0" fitWidth="160.0" layoutX="100.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="loadApts" alignment="CENTER" layoutX="89.0" layoutY="192.0" mnemonicParsing="false" onAction="#loadList" prefHeight="27.0" prefWidth="182.0" style="-fx-background-color: RED; -fx-border-width: 1; -fx-border-color: BLACK;" text="Load Appointments" textAlignment="CENTER" />
    </children>
 </AnchorPane>

@@ -39,6 +39,9 @@ public class Queue extends Application {
     private ImageView imageView;
     
     @FXML
+    private ListView<String> desList;
+    
+    @FXML
     private ListView<String> nameList;
 
 	@Override
@@ -76,14 +79,16 @@ public class Queue extends Application {
 	
 	public void loadList() {
 		ObservableList<String> names = FXCollections.observableArrayList();
+		ObservableList<String> decs = FXCollections.observableArrayList();
     	
     	Customer[] Queue = SQLRequests.Queue;
     	int totalCustomers = SQLRequests.Queue.length;
     	for (int i=0;i<totalCustomers;i++) {
     		names.add(Queue[i].Name);
-    		String description = Queue[i].CustomerDescription;
+    		decs.add(Queue[i].CustomerDescription);
     	}
     	nameList.setItems(names);
+    	desList.setItems(decs);
 	}
 
 }
