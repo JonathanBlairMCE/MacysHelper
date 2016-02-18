@@ -26,6 +26,12 @@ public class BookAppointment extends Application {
 	
 	static Stage window;
 	
+	ObservableList<String> gender = 
+		    FXCollections.observableArrayList(
+		    		"Male",
+		    		"Female"
+		    );	
+		    		
 	ObservableList<String> times = 
 		    FXCollections.observableArrayList(
 		        "9:00 am",
@@ -100,7 +106,7 @@ public class BookAppointment extends Application {
     private Button btSubmit;
 
     @FXML
-    private ComboBox<?> ddGender;
+    private ComboBox<String> ddGender;
 
     @FXML
     private Label lbDate;
@@ -145,8 +151,18 @@ public class BookAppointment extends Application {
 	    window.show();
 	}
 	
+    public void initialize() {
+    	loadItems();
+    }
+	
 	public static void main(String[] args) {
 		launch(args);
+	}
+	
+	@FXML
+	public void loadItems() {
+		//ddGender.setItems(gender);
+		ddTime.setItems(times);
 	}
 	
     @FXML
