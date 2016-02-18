@@ -1,7 +1,6 @@
 package application;
 
 import java.io.IOException;
-import application.Domain.*;
 import java.net.URL;
 import javafx.application.Application;
 import javafx.event.ActionEvent;

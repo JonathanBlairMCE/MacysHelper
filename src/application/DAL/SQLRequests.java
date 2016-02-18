@@ -2,8 +2,10 @@ package application.DAL;
 import application.Domain.Customer;
 import java.sql.Connection;
 
+
 public class SQLRequests
 {
+
 	public static final String TABLE_NAME = "dbo.ANDREW_CustomerDB"; //customer table
 	public static final String LOCATION_TABLE = "dbo.SLLNG_ZN";//selling zone table
 	public static Customer Customer_Customer = new Customer();
