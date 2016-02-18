@@ -168,24 +168,19 @@ public class SQLRequests
 
 		return new Customer[] {};
 	}
-
 	public static Boolean SQLRequest(String SQLString)//1st: create the connection to
 	{
-		 Connection con = null;
-		  String url = "jdbc:sqlserver://MT000XSSQL94/";
-		  String db = "SPManager";
-		  String driver = "com.microsoft.sqlserver.jdbc";
-		  String user = "slfadmin";
-		  String pass = "spmdadmin";
+		 Connection con = null; 
+		 String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 		  try{
 		  Class.forName(driver).newInstance();
-		  con = DriverManager.getConnection(url+db, user, pass);
+		  con = DriverManager.getConnection(SQL_SERVER_CONNECTION_STRING);
 		  Statement st = con.createStatement();
 		  ResultSet res = st.executeQuery("SELECT * FROM dbo.ANDREW_CustomerDB");
 		  res.next();
-		  System.out.println(res.getString("Name"));
+		  System.out.println(res);
 		  //return res.getString("Name");
-		  con.close();
+		  //con.close();
 		  }
 		  catch (SQLException s){
 			  s.printStackTrace();
@@ -194,13 +189,16 @@ public class SQLRequests
 		  catch (Exception e){
 		  e.printStackTrace();
 		  }
-		//finally {
-		//con.close();
-		//}
+		finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
 		 
-		return true;
-		
+		return true;	
 	}
-
-
+    
 }
