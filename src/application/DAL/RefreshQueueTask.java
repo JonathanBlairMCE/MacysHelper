@@ -8,7 +8,7 @@ public class RefreshQueueTask extends Thread
 		{
 			try
 			{
-				System.out.println("HEY");
+				SQLRequests.LoadQueue();
 				Thread.sleep(3000);
 			}
 			catch (Exception ex)

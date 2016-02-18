@@ -13,11 +13,13 @@ public class SQLRequests
 	public static final String SQL_SERVER_CONNECTION_STRING = "jdbc:sqlserver://MT000XSSQL94;databaseName=SPManager;user=slfadmin;password=spmdadmin;";
 	public static Customer[] Queue = new Customer[]{};
 
+	//done
 	public static Boolean ADSecurityAuthenticate(String password, String username)
 	{
 		return true;
 	}
 
+	//done
 	public static Boolean Submission(Customer customer)
 	{
 		Customer_Customer = customer;
@@ -42,6 +44,7 @@ public class SQLRequests
 		return SQLRequest(SQLString);
 	}
 
+	//done
 	public static Boolean Accept(int Cust_ID)
 	{
 		String SQLString = "";
@@ -49,27 +52,33 @@ public class SQLRequests
 		return SQLRequest(SQLString);
 	}
 
-	public static Customer[] LoadQueue()
+	//TODO
+	public static void LoadQueue()
 	{
+		String SQLString = "SELECT * FROM " + TABLE_NAME;
 
-		return new Customer[] {};
+		Queue = new Customer[] {};
 	}
 
+	//done
 	public static Boolean CancelAppointment()
 	{
 		return Accept(Customer_Customer.ID);
 	}
 
+	//done
 	public static Customer FullApptDetails(int Cust_ID)
 	{
-		for (int i = 0; i < Queue.length; i++)
+		Customer[] parseQueue = Queue;
+		for (int i = 0; i < parseQueue.length; i++)
 		{
-			if (Queue[i].ID == Cust_ID)
-				return Queue[i];
+			if (parseQueue[i].ID == Cust_ID)
+				return parseQueue[i];
 		}
 		return new Customer();
 	}
 
+	//TODO
 	public static int[] GetFloors(int store)
 	{
 
@@ -95,7 +104,7 @@ public class SQLRequests
 
 	public static Boolean SQLRequest(String SQLString)//1st: create the connection to
 	{
-		
+
 		return true;
 	}
 
