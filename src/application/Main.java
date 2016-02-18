@@ -19,7 +19,6 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException
 	{
-		(new RefreshQueueTask()).run(); //starts refresh queue task
 		window = primaryStage;
 	    // constructing our scene
 	    URL url = getClass().getResource("Index.fxml");
@@ -30,6 +29,7 @@ public class Main extends Application {
 	    window.setScene(Main);
 	    window.setTitle("Macys Helper");
 	    window.show();
+		//(new RefreshQueueTask()).run(); //starts refresh queue task
 	}
 
 	public static void main(String[] args) {
