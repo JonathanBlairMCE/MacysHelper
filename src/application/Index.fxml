@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MacysController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: #222222; -fx-border-color: BLACK; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MacysController">
    <children>
-      <Label layoutX="72.0" layoutY="56.0" text="Macys Helper" textAlignment="CENTER" textFill="RED">
+      <Label layoutX="78.0" layoutY="61.0" text="Macys Helper" textAlignment="CENTER" textFill="RED">
          <font>
-            <Font size="36.0" />
+            <Font name="Calibri Bold" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="testButton" layoutX="152.0" layoutY="434.0" mnemonicParsing="false" onAction="#testAction" text="Test">
+      <Button fx:id="testButton" alignment="CENTER" layoutX="151.0" layoutY="430.0" mnemonicParsing="false" onAction="#testAction" style="-fx-background-color: RED; -fx-border-width: 1; -fx-border-color: BLACK;" text="Test" textAlignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <TextField fx:id="testTF" layoutX="68.0" layoutY="281.0" style="-fx-background-color: Red;">
+      <TextField fx:id="testTF" layoutX="67.0" layoutY="279.0" style="-fx-background-color: Red; -fx-border-color: BLACK;">
          <font>
             <Font size="18.0" />
          </font>
