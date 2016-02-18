@@ -15,12 +15,17 @@
             <Font name="Calibri Bold" size="36.0" />
          </font>
       </Label>
-      <TextArea editable="false" layoutX="41.0" layoutY="162.0" prefHeight="232.0" prefWidth="278.0" text="Your appointment has &#10;been booked. You will &#10;be notified when an &#10;associate is ready&#10;to assist you.">
+      <TextArea fx:id="TextFieldWait" editable="false" layoutX="41.0" layoutY="162.0" prefHeight="232.0" prefWidth="278.0" text="Your appointment has &#10;been booked. You will &#10;be notified when an &#10;associate is ready&#10;to assist you.&#10;(Refresh to check)">
          <font>
             <Font size="24.0" />
          </font>
       </TextArea>
       <Button fx:id="bReturn" alignment="CENTER" layoutX="83.0" layoutY="425.0" mnemonicParsing="false" onAction="#returnHome" prefHeight="53.0" prefWidth="195.0" style="-fx-background-color: RED; -fx-border-width: 1; -fx-border-color: BLACK;" text="Return Home" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="refresh" alignment="CENTER" layoutX="83.0" layoutY="102.0" mnemonicParsing="false" onAction="#refresh" prefHeight="53.0" prefWidth="195.0" style="-fx-background-color: RED; -fx-border-width: 1; -fx-border-color: BLACK;" text="Refresh" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
