@@ -1,5 +1,6 @@
 package application;
 
+import application.DAL.*;
 import java.io.IOException;
 import java.net.URL;
 import javafx.application.Application;
@@ -8,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -17,6 +20,15 @@ public class EmployeeLogin extends Application {
     
     @FXML
     private Button backButon;
+    
+    @FXML
+    private Button btLogin;
+
+    @FXML
+    private PasswordField pfPassword;
+
+    @FXML
+    private TextField tfUsername;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -44,5 +56,20 @@ public class EmployeeLogin extends Application {
             new Main().start(window);
         } catch (Exception e) {}
     }
+	
+	@FXML
+	void login(ActionEvent event) {
+		String password = pfPassword.getText();
+		String username = tfUsername.getText();
+		Boolean authenticate = SQLRequests.ADSecurityAuthenticate(password, username);
+		if (authenticate) {
+			try{
+	            new Queue().start(window);
+	        } catch (Exception e) {}
+		}
+		else {
+			
+		}
+	}
 
 }

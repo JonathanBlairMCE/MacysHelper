@@ -54,6 +54,12 @@ public class Main extends Application {
             new Main().start(window);
         } catch (Exception e) {}
     }
+    
+    public void goToQueue() {
+        try{
+            new Queue().start(window);
+        } catch (Exception e) {}
+    }
 
 	@FXML
     private TextField testTF;

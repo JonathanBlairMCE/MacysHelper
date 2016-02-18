@@ -10,11 +10,36 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: #222222; -fx-border-color: BLACK; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EmployeeLogin">
    <children>
-      <Label layoutX="78.0" layoutY="61.0" text="Macys Helper" textAlignment="CENTER" textFill="RED">
+      <Label layoutX="78.0" layoutY="21.0" text="Macys Helper" textAlignment="CENTER" textFill="RED">
          <font>
             <Font name="Calibri Bold" size="36.0" />
          </font>
       </Label>
       <Button fx:id="backButon" alignment="CENTER" layoutX="292.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" prefHeight="27.0" prefWidth="54.0" style="-fx-background-color: RED; -fx-border-width: 1; -fx-border-color: BLACK;" text="Back" textAlignment="CENTER" />
+      <Label layoutX="124.0" layoutY="144.0" text="Username:" textFill="RED">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="127.0" layoutY="258.0" text="Password:" textFill="RED">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfUsername" layoutX="31.0" layoutY="179.0" promptText="Username">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btLogin" layoutX="135.0" layoutY="392.0" mnemonicParsing="false" onAction="#login" text="Login">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <PasswordField fx:id="pfPassword" layoutX="31.0" layoutY="295.0" promptText="Password">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </PasswordField>
    </children>
 </AnchorPane>

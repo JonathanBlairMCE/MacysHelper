@@ -43,14 +43,13 @@
       <TextField fx:id="tfName" layoutX="129.0" layoutY="78.0" prefHeight="25.0" prefWidth="212.0" promptText="Enter your name." />
       <TextArea fx:id="taLookingFor" layoutX="19.0" layoutY="212.0" prefHeight="79.0" prefWidth="322.0" promptText="Enter a brief description of what you will need assistance with." />
       <ComboBox fx:id="ddGender" layoutX="129.0" layoutY="105.0" prefHeight="25.0" prefWidth="212.0" promptText="Gender" visibleRowCount="2" />
-      <ComboBox fx:id="ddFloor" layoutX="129.0" layoutY="132.0" prefHeight="25.0" prefWidth="212.0" promptText="Floor number" visibleRowCount="2" />
+      <ComboBox fx:id="ddFloor" layoutX="129.0" layoutY="132.0" onAction="#floorAction" prefHeight="25.0" prefWidth="212.0" promptText="Floor number" visibleRowCount="2" />
       <Label layoutX="20.0" layoutY="299.0" text="Description of Yourself:" textFill="RED">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <TextArea fx:id="taSelfDescription" layoutX="19.0" layoutY="326.0" prefHeight="79.0" prefWidth="322.0" promptText="Enter a brief description of yourself so one of our associates can easily locate you." />
-      <DatePicker fx:id="dtDate" layoutX="129.0" layoutY="445.0" prefHeight="25.0" prefWidth="212.0" visible="false" />
       <Label fx:id="lbDate" layoutX="20.0" layoutY="444.0" prefHeight="27.0" prefWidth="100.0" text="Date:" textFill="RED" visible="false">
          <font>
             <Font size="18.0" />
@@ -68,7 +67,6 @@
          </font>
       </Label>
       <ComboBox fx:id="ddBudget" layoutX="129.0" layoutY="561.0" prefHeight="25.0" prefWidth="212.0" promptText="Budget" visible="false" visibleRowCount="5" />
-      <ComboBox fx:id="ddTime" layoutX="129.0" layoutY="472.0" prefHeight="25.0" prefWidth="212.0" promptText="Time" visible="false" visibleRowCount="48" />
       <Button fx:id="btSubmit" layoutX="19.0" layoutY="601.0" mnemonicParsing="false" onAction="#bookAppointment" prefHeight="25.0" prefWidth="322.0" text="Book Appointment" />
       <ComboBox fx:id="ddDepartment" disable="true" layoutX="129.0" layoutY="159.0" prefHeight="25.0" prefWidth="212.0" promptText="Department" visibleRowCount="2" />
       <ComboBox fx:id="ddBodyType" layoutX="129.0" layoutY="534.0" prefHeight="25.0" prefWidth="212.0" promptText="Budget" visible="false" visibleRowCount="5" />
@@ -79,5 +77,9 @@
       </Label>
       <ToggleButton fx:id="tgPreselection" layoutX="19.0" layoutY="501.0" mnemonicParsing="false" onAction="#outfitPreselection" prefHeight="25.0" prefWidth="322.0" text="Outfit preselection" visible="false" />
       <Button fx:id="backButon" alignment="CENTER" layoutX="298.0" layoutY="9.0" mnemonicParsing="false" onAction="#goBack" prefHeight="27.0" prefWidth="54.0" style="-fx-background-color: RED; -fx-border-width: 1; -fx-border-color: BLACK;" text="Back" textAlignment="CENTER" />
+      <ComboBox fx:id="ddMonth" layoutX="129.0" layoutY="445.0" prefHeight="25.0" prefWidth="99.0" promptText="Month" visible="false" />
+      <ComboBox fx:id="ddDay" layoutX="242.0" layoutY="445.0" prefHeight="25.0" prefWidth="99.0" promptText="Day" visible="false" />
+      <ComboBox fx:id="ddHour" layoutX="129.0" layoutY="472.0" prefHeight="25.0" prefWidth="100.0" promptText="Hour" visible="false" />
+      <ComboBox fx:id="ddMinute" layoutX="242.0" layoutY="472.0" prefHeight="25.0" prefWidth="99.0" promptText="Minute" visible="false" />
    </children>
 </AnchorPane>

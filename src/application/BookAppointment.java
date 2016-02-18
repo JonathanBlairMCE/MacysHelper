@@ -1,6 +1,7 @@
 package application;
 
 import application.*;
+import java.util.Date;
 import application.DAL.*;
 import application.Domain.*;
 import java.io.IOException;
@@ -47,60 +48,98 @@ public class BookAppointment extends Application {
 		    		"Fragrances"
 		    );
 		    		
-	ObservableList<String> times = 
+	ObservableList<String> hours = 
 		    FXCollections.observableArrayList(
-		        "9:00 am",
-		        "9:15 am",
-		        "9:30 am",
-		        "9:45 am",
-		        "10:00 am",
-		        "10:15 am",
-		        "10:30 am",
-		        "10:45 am",
-		        "11:00 am",
-		        "11:15 am",
-		        "11:30 am",
-		        "11:45 am",
-		        "12:00 pm",
-		        "12:15 pm",
-		        "12:30 pm",
-		        "12:45 pm",
-		        "1:00 pm",
-		        "1:15 pm",
-		        "1:30 pm",
-		        "1:45 pm",
-		        "2:00 pm",
-		        "2:15 pm",
-		        "2:30 pm",
-		        "2:45 pm",
-		        "3:00 pm",
-		        "3:15 pm",
-		        "3:30 pm",
-		        "3:45 pm",
-		        "4:00 pm",
-		        "4:15 pm",
-		        "4:30 pm",
-		        "4:45 pm",
-		        "5:00 pm",
-		        "5:15 pm",
-		        "5:30 pm",
-		        "5:45 pm",
-		        "6:00 pm",
-		        "6:15 pm",
-		        "6:30 pm",
-		        "6:45 pm",
-		        "7:00 pm",
-		        "7:15 pm",
-		        "7:30 pm",
-		        "7:45 pm",
-		        "8:00 pm",
-		        "8:15 pm",
-		        "8:30 pm",
-		        "8:45 pm"
+		    		"9",
+			        "10",
+			        "11",
+			        "12",
+			        "13",
+			        "14",
+			        "15",
+			        "16",
+			        "17",
+			        "18",
+			        "19",
+			        "20"
 		    );
 	
-	@FXML
-    private ComboBox<String> ddTime;
+	ObservableList<String> minutes = 
+		    FXCollections.observableArrayList(
+		        "00",
+		        "15",
+		        "30",
+		        "45"
+		    );
+	
+	ObservableList<String> days = 
+		    FXCollections.observableArrayList(
+		    		"1",
+			        "2",
+			        "3",
+			        "4",
+			        "5",
+			        "6",
+			        "7",
+			        "8",
+			        "9",
+			        "10",
+			        "11",
+			        "12",
+			        "13",
+			        "14",
+			        "15",
+			        "16",
+			        "17",
+			        "18",
+			        "19",
+			        "20",
+			        "21",
+			        "22",
+			        "23",
+			        "24",
+			        "25",
+			        "26",
+			        "27",
+			        "28",
+			        "29",
+			        "30",
+			        "31"
+		    );
+	
+	ObservableList<String> months = 
+		    FXCollections.observableArrayList(
+		        "1",
+		        "2",
+		        "3",
+		        "4",
+		        "5",
+		        "6",
+		        "7",
+		        "8",
+		        "9",
+		        "10",
+		        "11",
+		        "12"
+		    );
+	
+	ObservableList<String> bodyTypes = 
+		    FXCollections.observableArrayList(
+		        "Short - Slim",
+		        "Short - Average Weight",
+		        "Short - Hefty",
+		        "Average Height - Slim",
+		        "Average Height - Average Weight",
+		        "Average Height - Hefty",
+		        "Tall - Slim",
+		        "Tall - Average Weight",
+		        "Tall - Hefty"
+		    );
+	
+	ObservableList<Double> budget = 
+		    FXCollections.observableArrayList(
+		        20.00, 40.00, 60.00, 80.00, 100.00, 1000.00, 999999.99
+		    );
 
     @FXML
     private ComboBox<Double> ddBudget;
@@ -131,9 +170,6 @@ public class BookAppointment extends Application {
 
     @FXML
     private ToggleButton tgPreselection;
-
-    @FXML
-    private DatePicker dtDate;
     
     @FXML
     private Button backButon;
@@ -151,7 +187,19 @@ public class BookAppointment extends Application {
     private Label lbTime;
 
     @FXML
-    private ComboBox<?> ddBodyType;
+    private ComboBox<String> ddBodyType;
+    
+    @FXML
+    private ComboBox<String> ddMinute;
+
+    @FXML
+    private ComboBox<String> ddDay;
+    
+    @FXML
+    private ComboBox<String> ddHour;
+    
+    @FXML
+    private ComboBox<String> ddMonth;
     
 	
     public void initialize() {
@@ -181,7 +229,12 @@ public class BookAppointment extends Application {
 	@FXML
 	public void loadItems() {
 		ddGender.setItems(gender);
-		ddTime.setItems(times);
+		ddMonth.setItems(months);
+		ddHour.setItems(hours);
+		ddDay.setItems(days);
+		ddMinute.setItems(minutes);
+		ddBudget.setItems(budget);
+		ddBodyType.setItems(bodyTypes);
 		
 		//int[] floors = SQLRequests.GetFloors(14);
 		//floor = FXCollections.observableArrayList(floors);
@@ -192,18 +245,22 @@ public class BookAppointment extends Application {
     @FXML
     void futureAppointment(ActionEvent event) {
     	if (tgAppointment.isSelected()) {
-    		dtDate.setVisible(true);
-    		tgPreselection.setVisible(true);
-    		ddTime.setVisible(true);
+    		ddMonth.setVisible(true);
+    		ddDay.setVisible(true);
+    		ddHour.setVisible(true);
+    		ddMinute.setVisible(true);
     		lbDate.setVisible(true);
     		lbTime.setVisible(true);
+    		tgPreselection.setVisible(true);
     		tgPreselection.setSelected(false);
     	}
     	else {
-    		dtDate.setVisible(false);
+    		ddMonth.setVisible(false);
+    		ddDay.setVisible(false);
+    		ddHour.setVisible(false);
+    		ddMinute.setVisible(false);
     		tgPreselection.setVisible(false);
     		ddBodyType.setVisible(false);
-    		ddTime.setVisible(false);
     		ddBudget.setVisible(false);
     		lbBudget.setVisible(false);
     		lbDate.setVisible(false);
@@ -227,17 +284,23 @@ public class BookAppointment extends Application {
     	if (!(tgAppointment.isSelected())) {
     		SQLRequests.Submission(newCustomer);
     	}
-    	else if (!(tgPreselection.isSelected())) {
+    	else if (!(tgPreselection.isSelected()) && (tgAppointment.isSelected())) {
+    		int aptHour = Integer.parseInt(ddHour.getValue());
+    		int aptMin = Integer.parseInt(ddMinute.getValue());
+    		int aptMonth = Integer.parseInt(ddMonth.getValue());
+    		int aptDay = Integer.parseInt(ddDay.getValue());
+
+    		@SuppressWarnings("deprecation")
+			Date appointmentTime = new Date(2016, aptMonth, aptDay, aptHour, aptMin);
+    		newCustomer.DateTime = appointmentTime;
     		
     		SQLRequests.Submission(newCustomer);
     	}
     	else {
+    		newCustomer.BodyType = ddBodyType.getValue();
     		
     		SQLRequests.Submission(newCustomer);
     	}
-    	
-    	
-    	
     }
 
     @FXML
@@ -261,6 +324,11 @@ public class BookAppointment extends Application {
     	try{
             new Main().start(window);
         } catch (Exception e) {}
+    }
+    
+    @FXML
+    void floorAction(ActionEvent event) {
+    	ddDepartment.setDisable(false);
     }
 
 }
