@@ -23,67 +23,70 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class Queue extends Application {
-	
-    static Stage window;
-    
-    @FXML
-    private ScrollPane textAreaQueue;
-    
-    @FXML
-    private Button loadApts;
-    
-    @FXML
-    private Button btLogout;
-    
-    @FXML
-    private ImageView imageView;
-    
-    @FXML
-    private ListView<String> nameList;
+
+	static Stage window;
+
+	@FXML
+	private ScrollPane textAreaQueue;
+
+	@FXML
+	private Button loadApts;
+
+	@FXML
+	private Button btLogout;
+
+	@FXML
+	private ImageView imageView;
+
+	@FXML
+	private ListView<String> nameList;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-	    
+
 		window = primaryStage;
-		
-	    // constructing our scene
-	    URL url = getClass().getResource("Queue.fxml");
-	    AnchorPane pane = FXMLLoader.load(url);
-	    Scene Queue = new Scene(pane);
-	    
-	    // setting the stage
-	    window.setScene(Queue);
-	    window.setTitle("Queue");
-	    window.show();
+
+		// constructing our scene
+		URL url = getClass().getResource("Queue.fxml");
+		AnchorPane pane = FXMLLoader.load(url);
+		Scene Queue = new Scene(pane);
+
+		// setting the stage
+		window.setScene(Queue);
+		window.setTitle("Queue");
+		window.show();
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
+
 	public void initialize() {
 		Image Alex = new Image("application/Assets/20160217_115431.jpg");
-    	imageView.setImage(Alex);
-    	
-    }
-	
+		imageView.setImage(Alex);
+
+	}
+
 	@FXML
-    void logout(ActionEvent event) {
+	void logout(ActionEvent event) {
 		try{
-            new Main().start(window);
-        } catch (Exception e) {}
-    }
-	
+			new Main().start(window);
+		} catch (Exception e) {}
+	}
+
 	public void loadList() {
 		ObservableList<String> names = FXCollections.observableArrayList();
-    	
-    	Customer[] Queue = SQLRequests.Queue;
-    	int totalCustomers = SQLRequests.Queue.length;
-    	for (int i=0;i<totalCustomers;i++) {
-    		names.add(Queue[i].Name);
-    		String description = Queue[i].CustomerDescription;
-    	}
-    	nameList.setItems(names);
+
+		Customer[] Queue = SQLRequests.Queue;
+		int totalCustomers = SQLRequests.Queue.length;
+		for (int i=0;i<totalCustomers;i++) {
+			if (Queue[i] != null)
+			{
+				names.add(Queue[i].Name);
+				String description = Queue[i].CustomerDescription;
+			}
+		}
+		nameList.setItems(names);
 	}
 
 }

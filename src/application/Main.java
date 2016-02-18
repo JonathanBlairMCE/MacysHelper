@@ -33,6 +33,11 @@ public class Main extends Application {
 //starts refresh queue task
 	}
 
+	public void initialize()
+	{
+		SQLRequests.StartEmployeeLogic();
+	}
+
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -42,19 +47,19 @@ public class Main extends Application {
             new BookAppointment().start(window);
         } catch (Exception e) {}
     }
-    
+
     public void goToEmployeeLogin() {
         try{
             new EmployeeLogin().start(window);
         } catch (Exception e) {}
     }
-    
+
     public void goToMain() {
         try{
             new Main().start(window);
         } catch (Exception e) {}
     }
-    
+
     public void goToQueue() {
         try{
             new Queue().start(window);
@@ -69,7 +74,7 @@ public class Main extends Application {
 
     @FXML
     private Button getHelpButton;
-    
+
     @FXML
     private Button employeeLoginButton;
 
@@ -83,7 +88,7 @@ public class Main extends Application {
     void getHelp(ActionEvent event) {
     	goToBookAppointment();
     }
-    
+
     @FXML
     void employeeLogin(ActionEvent event) {
     	goToEmployeeLogin();
