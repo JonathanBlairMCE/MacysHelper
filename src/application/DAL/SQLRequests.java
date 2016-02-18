@@ -22,6 +22,8 @@ public class SQLRequests
 		return true;
 	}
 
+
+
 	//done
 	public static Boolean Submission(Customer customer)
 	{
@@ -50,6 +52,7 @@ public class SQLRequests
 	//done
 	public static Boolean Accept(int Cust_ID)
 	{
+		Employee_Customer = GetCustomerFromQueue(Cust_ID);
 		String SQLString = "";
 		SQLString = "DELETE FROM " + TABLE_NAME + " WHERE ID = " + Cust_ID;
 		return SQLRequest(SQLString);
@@ -74,7 +77,7 @@ public class SQLRequests
 	}
 
 	//done
-	public static Customer FullApptDetails(int Cust_ID)
+	public static Customer GetCustomerFromQueue(int Cust_ID)
 	{
 		Customer[] parseQueue = Queue;
 		for (int i = 0; i < parseQueue.length; i++)
