@@ -12,10 +12,21 @@ public class MacysController {
 
     @FXML
     private Button testButton;
+    
+    @FXML
+    private Button getHelpButton;
 
     @FXML
     void testAction(ActionEvent event) {
     	testTF.setText("Let's make this happen!");
+    }
+    
+    @FXML
+    void getHelp(ActionEvent event) {
+        try{
+            new BookAppointment().start(window);
+        } catch (Exception e) {}
+        System.out.println("It's connected");
     }
 
 }

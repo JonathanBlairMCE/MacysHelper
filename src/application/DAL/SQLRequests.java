@@ -5,8 +5,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+
 public class SQLRequests
 {
+
 	public static final String TABLE_NAME = "dbo.ANDREW_CustomerDB"; //customer table
 	public static final String LOCATION_TABLE = "dbo.SLLNG_ZN";//selling zone table
 	public static Customer Customer_Customer = new Customer();
@@ -14,11 +16,13 @@ public class SQLRequests
 	public static final String SQL_SERVER_CONNECTION_STRING = "jdbc:sqlserver://MT000XSSQL94;databaseName=SPManager;user=slfadmin;password=spmdadmin;";
 	public static Customer[] Queue = new Customer[]{};
 
+	//done
 	public static Boolean ADSecurityAuthenticate(String password, String username)
 	{
 		return true;
 	}
 
+	//done
 	public static Boolean Submission(Customer customer)
 	{
 		Customer_Customer = customer;
@@ -43,6 +47,7 @@ public class SQLRequests
 		return SQLRequest(SQLString);
 	}
 
+	//done
 	public static Boolean Accept(int Cust_ID)
 	{
 		String SQLString = "";
@@ -50,28 +55,42 @@ public class SQLRequests
 		return SQLRequest(SQLString);
 	}
 
+<<<<<<< HEAD
 	public static Customer[] LoadQueue()//copy the queue into a new object so that data will not be lost when refresh happens
+=======
+	//TODO
+	public static void LoadQueue()
+>>>>>>> origin/master
 	{
+		String SQLString = "SELECT * FROM " + TABLE_NAME;
 
-		return new Customer[] {};
+		Queue = new Customer[] {};
 	}
 
+	//done
 	public static Boolean CancelAppointment()
 	{
 		return Accept(Customer_Customer.ID);
 	}
 
+	//done
 	public static Customer FullApptDetails(int Cust_ID)
 	{
-		for (int i = 0; i < Queue.length; i++)
+		Customer[] parseQueue = Queue;
+		for (int i = 0; i < parseQueue.length; i++)
 		{
-			if (Queue[i].ID == Cust_ID)
-				return Queue[i];
+			if (parseQueue[i].ID == Cust_ID)
+				return parseQueue[i];
 		}
 		return new Customer();
 	}
 
+<<<<<<< HEAD
 	public static int[] GetFloors(int store)//get the floors from the JSON file
+=======
+	//TODO
+	public static int[] GetFloors(int store)
+>>>>>>> origin/master
 	{
 
 		return new int[] {};
@@ -96,6 +115,7 @@ public class SQLRequests
 
 	public static Boolean SQLRequest(String SQLString)//1st: create the connection to
 	{
+<<<<<<< HEAD
 		try
         {	
 			 Statement stm = null;
@@ -128,6 +148,9 @@ public class SQLRequests
 	    }
 
 		
+=======
+
+>>>>>>> origin/master
 		return true;
 	}
 

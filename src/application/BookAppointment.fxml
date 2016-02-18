@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: #222222; -fx-border-color: BLACK; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BookAppointment">
+   <children>
+      <Label layoutX="78.0" layoutY="22.0" text="Macys Helper" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font name="Calibri Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="77.0" prefHeight="27.0" prefWidth="100.0" text="Name:" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="104.0" prefHeight="27.0" prefWidth="100.0" text="Gender:" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="131.0" prefHeight="27.0" prefWidth="100.0" text="Floor:" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="158.0" text="Department:" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="185.0" text="Looking For:" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfName" layoutX="129.0" layoutY="78.0" prefHeight="25.0" prefWidth="212.0" promptText="Enter your name." />
+      <TextArea fx:id="taLookingFor" layoutX="19.0" layoutY="212.0" prefHeight="79.0" prefWidth="322.0" promptText="Enter a brief description of what you will need assistance with." />
+      <ComboBox fx:id="ddGender" layoutX="129.0" layoutY="105.0" prefHeight="25.0" prefWidth="212.0" promptText="Gender" visibleRowCount="2" />
+      <ComboBox fx:id="ddFloor" layoutX="129.0" layoutY="132.0" prefHeight="25.0" prefWidth="212.0" promptText="Floor number" visibleRowCount="2" />
+      <Label layoutX="20.0" layoutY="299.0" text="Description of Yourself:" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="taSelfDescription" layoutX="19.0" layoutY="326.0" prefHeight="79.0" prefWidth="322.0" promptText="Enter a brief description of yourself so one of our associates can easily locate you." />
+      <DatePicker fx:id="dtDate" layoutX="129.0" layoutY="445.0" prefHeight="25.0" prefWidth="212.0" />
+      <Label layoutX="20.0" layoutY="444.0" prefHeight="27.0" prefWidth="100.0" text="Date:" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ToggleButton fx:id="tgAppointment" layoutX="19.0" layoutY="411.0" mnemonicParsing="false" onAction="#futureAppointment" prefHeight="25.0" prefWidth="322.0" text="Click here to book a future appointment." />
+      <Label layoutX="20.0" layoutY="471.0" prefHeight="27.0" prefWidth="100.0" text="Time:" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="560.0" prefHeight="27.0" prefWidth="100.0" text="Budget:" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="ddBudget" layoutX="129.0" layoutY="561.0" prefHeight="25.0" prefWidth="212.0" promptText="Budget" visibleRowCount="5" />
+      <ComboBox fx:id="ddTime" layoutX="129.0" layoutY="472.0" prefHeight="25.0" prefWidth="212.0" promptText="Time" visibleRowCount="48" />
+      <Button fx:id="btSubmit" layoutX="19.0" layoutY="601.0" mnemonicParsing="false" onAction="#bookAppointment" prefHeight="25.0" prefWidth="322.0" text="Book Appointment" />
+      <ComboBox fx:id="ddDepartment" editable="true" layoutX="129.0" layoutY="159.0" prefHeight="25.0" prefWidth="212.0" promptText="Department" visibleRowCount="2" />
+      <ComboBox fx:id="ddBodyType" layoutX="129.0" layoutY="534.0" prefHeight="25.0" prefWidth="212.0" promptText="Budget" visibleRowCount="5" />
+      <Label layoutX="20.0" layoutY="533.0" prefHeight="27.0" prefWidth="100.0" text="Body Type:" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ToggleButton fx:id="tgPreselection" layoutX="19.0" layoutY="501.0" mnemonicParsing="false" onAction="#outfitPreselection" prefHeight="25.0" prefWidth="322.0" text="Outfit preselection" />
+   </children>
+</AnchorPane>
