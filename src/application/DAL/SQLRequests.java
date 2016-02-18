@@ -8,7 +8,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
 
 
 public class SQLRequests
@@ -32,23 +31,23 @@ public class SQLRequests
 	public static void StartEmployeeLogic()
 	{
 		new Thread(){
-            @Override
-            public void run() {
-            	while (true)
-            	{
-	                try
-	                {
-	                	LoadQueue();
-	                	System.out.println("LoadedQueue");
-	                	Thread.sleep(3000);
-	                }
-	                catch (Exception ex)
-	                {
+			@Override
+			public void run() {
+				while (true)
+				{
+					try
+					{
+						LoadQueue();
+						System.out.println("LoadedQueue");
+						Thread.sleep(3000);
+					}
+					catch (Exception ex)
+					{
 
-	                }
-            	}
-            }
-        }.start();
+					}
+				}
+			}
+		}.start();
 	}
 
 	//done
@@ -113,80 +112,93 @@ public class SQLRequests
 
 	public static int[] GetFloors(int store)
 	{
-		return new int[]{0,1,2,3};
-		/*
 		if (StoreInfo == null || StoreInfo.length == 0)
 			GetStoreInfo(71, store);
-		int[] floors = new int[StoreInfo.length];
+		int[] floors = new int[]{};
 		int currentFloor = 0;
-		for (int i = 0; i < StoreInfo.length; i++)
+		for (int i = 0; i < StoreInfo.length && StoreInfo[i] != null; i++)
 		{
 			Boolean alreadyIn = false;
 			for (int n = 0; n < floors.length; n++)
-				if (floors[n] == StoreInfo[i].floor)
+				if (StoreInfo[i] != null && floors[n] == StoreInfo[i].floor)
 				{
 					alreadyIn = true;
 					break;
 				}
 			if (!alreadyIn)
 			{
+				int[] tempArray = floors;
+				floors = new int[tempArray.length + 1];
+				for (int b = 0; b < tempArray.length; b++)
+				{
+					floors[b] = tempArray[b];
+				}
 				floors[currentFloor] = StoreInfo[i].floor;
 				currentFloor++;
 			}
 		}
-		return floors;*/
+		return floors;
 	}
 
 	public static String[] GetDepartments(int floor)//get the Departments from the JSON file
 	{
-		return new String[] {"Mens Suits", "Womens Shoes", "Children"};
-		/*
+
 		if (StoreInfo == null || StoreInfo.length == 0)
 			GetStoreInfo(71, 3);
-		String[] departments = new String[StoreInfo.length];
+		String[] departments = new String[]{};
 		for (int i = 0; i < StoreInfo.length; i++)
 		{
-			if (StoreInfo[i].floor == floor)
-				departments[i] = StoreInfo[i].department;
+			if (StoreInfo[i] != null && StoreInfo[i].floor == floor)
+			{
+				String[] tempArray = departments;
+				departments = new String[tempArray.length + 1];
+				for (int b = 0; b < tempArray.length; b++)
+				{
+					departments[b] = tempArray[b];
+				}
+				departments[departments.length-1] = StoreInfo[i].department.substring(StoreInfo[i].department.indexOf('-')+1);
+			}
 		}
-		return departments;*/
+		return departments;
 	}
 
 	public static void GetStoreInfo(int ZL_DIV_NBR, int ZL_STR_NBR)//get the row info for the store and save the info
 	{
-		String SQLString = "SELECT DISTINCT ZN_NAME, [FLR_NBR] FROM [SPManager].[dbo].[SLLNG_ZN] WHERE ZL_STORE_NBR = " + ZL_STR_NBR
-				+ " AND ZL_DIVN_NBR = "+ZL_DIV_NBR+" ORDER BY FLR_NBR";
-    	
-    	 String SQL_SERVER_CONNECTION_STRING = "jdbc:sqlserver://MT000XSSQL94;databaseName=SPManager;user=slfadmin;password=spmdadmin;";
-		 Connection con = null; 
-		 String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-		  try{
-		  Class.forName(driver).newInstance();
-		  con = DriverManager.getConnection(SQL_SERVER_CONNECTION_STRING);
-		  Statement st = con.createStatement();
-		  ResultSet res = st.executeQuery(SQLString);
-		  
-		  Array zoneName = res.getArray("ZN_NAME");
-		  Array floorNumber = res.getArray("FLR_NBR");
-		  
-		  //System.out.println(res.getString("ZN_NAME") + res.getString("FLR_NBR"));
-		  //StoreInfo="";
+		String SQLString = "SELECT DISTINCT ZN_NAME, [FLR_NBR] FROM [SPManager].[dbo].[SLLNG_ZN] WHERE ZL_STORE_NBR = 3 AND ZL_DIVN_NBR = 71 ORDER BY FLR_NBR";
 
-		  }
-		  catch (SQLException s){
-			  s.printStackTrace();
-		  System.out.println("SQL code does not execute.");
-		  }  
-		  catch (Exception e){
-		  e.printStackTrace();
-		  }
-		finally {
-		try {
-			con.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		String SQL_SERVER_CONNECTION_STRING = "jdbc:sqlserver://MT000XSSQL94;databaseName=SPManager;user=slfadmin;password=spmdadmin;";
+		Connection con = null;
+		String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+		try
+		{
+			Class.forName(driver).newInstance();
+			con = DriverManager.getConnection(SQL_SERVER_CONNECTION_STRING);
+			Statement st = con.createStatement();
+			ResultSet res = st.executeQuery(SQLString);
+			StoreInfo = new StoreRow[1000];
+			int i = 0;
+			while (res.next())
+			{
+				StoreInfo[i] = new StoreRow();
+				StoreInfo[i].floor = res.getInt("FLR_NBR");
+				StoreInfo[i].department = res.getString("ZN_NAME");
+				i++;
+			}
+		}
+		catch (SQLException s){
+			s.printStackTrace();
+			System.out.println("SQL code does not execute.");
+		}
+		catch (Exception e){
 			e.printStackTrace();
 		}
+		finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -198,58 +210,12 @@ public class SQLRequests
 	public static Customer[] GetCustomersSQL()//2nd populate rows with the customer data
 	{
 
-String SQLString = "SELECT * FROM" + TABLE_NAME;
-		
-		String SQL_SERVER_CONNECTION_STRING = "jdbc:sqlserver://MT000XSSQL94;databaseName=SPManager;user=slfadmin;password=spmdadmin;";
-		 Connection con = null; 
-		 String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-		  try{
-		  Class.forName(driver).newInstance();
-		  con = DriverManager.getConnection(SQL_SERVER_CONNECTION_STRING);
-		  Statement st = con.createStatement();
-		  ResultSet res = st.executeQuery(SQLString);
-		  res.next();
-	
-			  
-			 int ID = res.getInt("ID") ;
-			 String Name = res.getString("Name") ;
-			 String Gender = res.getString("Gender");
-			 int Store = res.getInt("Store");
-			 String Department = res.getString("Department");
-			 String SearchItems = res.getString("SearchItems");
-			 String CustomerDescription = res.getString("CustomerDescription");
-			 Date DateTime = new Date();
-			 String Preselection = res.getString("Preselection");
-			 String BodyType = res.getString("BodyType");
-			 double Budget = res.getDouble("Budget");
-			 String Preferences = res.getString("Preferences");
-			 String Comments = res.getString("Comments");
-			 
-		  }
-		  catch (SQLException s){
-			  s.printStackTrace();
-		  System.out.println("SQL code does not execute.");
-		  }  
-		  catch (Exception e){
-		  e.printStackTrace();
-		  }
-		finally {
-		try {
-			con.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		}		
-
-		
-		
 		return new Customer[] {};
 	}
-	
+
 	public static Boolean SQLRequest(String SQLString)//1st: create the connection to
 	{
-		Connection con = null; 
+		Connection con = null;
 		String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 		try{
 			Class.forName(driver).newInstance();
@@ -265,7 +231,7 @@ String SQLString = "SELECT * FROM" + TABLE_NAME;
 		catch (SQLException s){
 			s.printStackTrace();
 			System.out.println("SQL code does not execute.");
-		}  
+		}
 		catch (Exception e){
 			e.printStackTrace();
 		}
@@ -278,7 +244,7 @@ String SQLString = "SELECT * FROM" + TABLE_NAME;
 			}
 		}
 
-		return false;	
+		return false;
 	}
-    
+
 }
