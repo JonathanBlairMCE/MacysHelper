@@ -12,7 +12,7 @@ public class Customer
 	public String SearchItems = "";
 	public String CustomerDescription = "";
 	public Date DateTime = new Date();
-	public Boolean Preselection = false;
+	public int Preselection = 0;
 	public String BodyType = "";
 	public double Budget = 0.0;
 	public String Preferences = "";

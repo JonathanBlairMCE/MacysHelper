@@ -31,6 +31,7 @@ public class SQLRequests
 
 	public static void StartEmployeeLogic()
 	{
+		Submission(new Customer());
 		new Thread(){
 			@Override
 			public void run() {
@@ -41,8 +42,8 @@ public class SQLRequests
 						LoadQueue();
 						System.out.println("LoadedQueue");
 						Thread.sleep(3000);
-						Customer acust = Queue[0];
-						System.out.println("Name" + acust.Name);
+						Customer acust = Queue[1];
+						System.out.println("Name " + acust.Name);
 					}
 					catch (Exception ex)
 					{
@@ -56,24 +57,26 @@ public class SQLRequests
 	//done
 	public static Boolean Submission(Customer customer)
 	{
+
 		Customer_Customer = customer;
 		String SQLString = "";
 		SQLString = "INSERT INTO " + TABLE_NAME +  " (Name, Gender, Store, Floor, Department, SearchItems, CustomerDescription, DateTime, Preselection, BodyType, Budget, Preferences, Comments) ";
 		SQLString = SQLString + "VALUES (" +
-				customer.Name + ", " +
-				customer.Gender + ", " +
+				"'"+customer.Name+"'"  + ", " +
+				"'"+customer.Gender+"'"  + ", " +
 				customer.Store + ", " +
 				customer.Floor + ", " +
-				customer.Department + ", " +
-				customer.SearchItems + ", " +
-				customer.CustomerDescription + ", " +
-				customer.DateTime + ", " +
+				"'"+customer.Department+"'"  + ", " +
+				"'"+customer.SearchItems+"'"  + ", " +
+				"'"+customer.CustomerDescription+"'"  + ", " +
+				"02/18/2016" + ", " +
 				customer.Preselection + ", " +
-				customer.BodyType + ", " +
+				"'"+customer.BodyType+"'"  + ", " +
 				customer.Budget + ", " +
-				customer.Preferences + ", " +
-				customer.Comments +
+				"'"+customer.Preferences+"'"  + ", " +
+				"'"+customer.Comments+"'" +
 				");";
+		System.out.println(SQLString);
 
 		return SQLRequest(SQLString);
 	}
@@ -210,7 +213,7 @@ public class SQLRequests
 
 	public static Customer[] GetCustomersSQL()//2nd populate rows with the customer data
 	{
-		String SQLString = "SELECT * FROM" + TABLE_NAME;
+		String SQLString = "SELECT * FROM " + TABLE_NAME;
 
 		String SQL_SERVER_CONNECTION_STRING = "jdbc:sqlserver://MT000XSSQL94;databaseName=SPManager;user=slfadmin;password=spmdadmin;";
 		Connection con = null;
@@ -236,7 +239,7 @@ public class SQLRequests
 				Queue[i].SearchItems = res.getString("SearchItems");
 				Queue[i].CustomerDescription = res.getString("CustomerDescription");
 				Queue[i].DateTime = new Date();
-				Queue[i].Preselection = res.getBoolean("Preselection");
+				Queue[i].Preselection = res.getInt("Preselection");
 				Queue[i].BodyType = res.getString("BodyType");
 				Queue[i].Budget = res.getDouble("Budget");
 				Queue[i].Preferences = res.getString("Preferences");
@@ -270,16 +273,14 @@ public class SQLRequests
 			Class.forName(driver).newInstance();
 			con = DriverManager.getConnection(SQL_SERVER_CONNECTION_STRING);
 			Statement st = con.createStatement();
-			ResultSet res = st.executeQuery(SQLString);
-			res.next();
-			System.out.println(res);
+			st.executeQuery(SQLString);
 			//return res.getString("Name");
 			//con.close();
 			return true;
 		}
 		catch (SQLException s){
-			s.printStackTrace();
-			System.out.println("SQL code does not execute.");
+			//s.printStackTrace();
+			//System.out.println("SQL code does not execute.");
 		}
 		catch (Exception e){
 			e.printStackTrace();
