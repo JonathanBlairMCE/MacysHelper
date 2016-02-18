@@ -1,5 +1,7 @@
 package application.DAL;
 import application.Domain.Customer;
+import application.Domain.StoreRow;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -13,13 +15,37 @@ public class SQLRequests
 	public static final String LOCATION_TABLE = "dbo.SLLNG_ZN";//selling zone table
 	public static Customer Customer_Customer = new Customer();
 	public static Customer Employee_Customer = new Customer();
+	public static Boolean isEmployee = false;
 	public static final String SQL_SERVER_CONNECTION_STRING = "jdbc:sqlserver://MT000XSSQL94;databaseName=SPManager;user=slfadmin;password=spmdadmin;";
 	public static Customer[] Queue = new Customer[]{};
+	public static StoreRow[] StoreInfo = new StoreRow[]{};
 
 	//done
 	public static Boolean ADSecurityAuthenticate(String password, String username)
 	{
 		return true;
+	}
+
+	public static void StartEmployeeLogic()
+	{
+		new Thread(){
+            @Override
+            public void run() {
+            	while (true)
+            	{
+	                try
+	                {
+	                	LoadQueue();
+	                	System.out.println("LoadedQueue");
+	                	Thread.sleep(3000);
+	                }
+	                catch (Exception ex)
+	                {
+
+	                }
+            	}
+            }
+        }.start();
 	}
 
 	//done
@@ -76,14 +102,34 @@ public class SQLRequests
 
 	public static int[] GetFloors(int store)
 	{
-
-		return new int[] {};
+		if (StoreInfo == null || StoreInfo.length == 0)
+			GetStoreInfo(71, 3);
+		int[] floors = new int[StoreInfo.length];
+		for (int i = 0; i < StoreInfo.length; i++)
+		{
+			floors[i] = StoreInfo[i].floor;
+		}
+		return floors;
 	}
 
 	public static String[] GetDepartments()//get the Departments from the JSON file
 	{
+		if (StoreInfo == null || StoreInfo.length == 0)
+			GetStoreInfo(71, 3);
+		String[] departments = new String[StoreInfo.length];
+		for (int i = 0; i < StoreInfo.length; i++)
+		{
+			departments[i] = StoreInfo[i].department;
+		}
+		return departments;
+	}
 
-		return new String[]{};
+	public static void GetStoreInfo(int ZL_DIV_NBR, int ZL_STR_NBR)
+	{
+		String SQLString = "SELECT DISTINCT ZN_NAME, [FLR_NBR] FROM [SPManager].[dbo].[SLLNG_ZN] WHERE ZL_STORE_NBR = " + ZL_STR_NBR + " AND ZL_DIVN_NBR = "+ZL_DIV_NBR+" ORDER BY FLR_NBR";
+
+
+		//StoreInfo =
 	}
 
 	public static void SaveInputFields()

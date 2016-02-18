@@ -29,7 +29,8 @@ public class Main extends Application {
 	    window.setScene(Main);
 	    window.setTitle("Macys Helper");
 	    window.show();
-		//(new RefreshQueueTask()).run(); //starts refresh queue task
+
+//starts refresh queue task
 	}
 
 	public static void main(String[] args) {
@@ -55,6 +56,7 @@ public class Main extends Application {
     @FXML
     void testAction(ActionEvent event) {
     	testTF.setText("Let's make this happen!");
+	    SQLRequests.StartEmployeeLogic();
     }
 
     @FXML
