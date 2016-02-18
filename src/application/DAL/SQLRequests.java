@@ -8,7 +8,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
 
 
 public class SQLRequests
@@ -197,49 +196,6 @@ public class SQLRequests
 
 	public static Customer[] GetCustomersSQL()//2nd populate rows with the customer data
 	{
-		String SQLString = "SELECT * FROM" + TABLE_NAME;
-		
-		String SQL_SERVER_CONNECTION_STRING = "jdbc:sqlserver://MT000XSSQL94;databaseName=SPManager;user=slfadmin;password=spmdadmin;";
-		 Connection con = null; 
-		 String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-		  try{
-		  Class.forName(driver).newInstance();
-		  con = DriverManager.getConnection(SQL_SERVER_CONNECTION_STRING);
-		  Statement st = con.createStatement();
-		  ResultSet res = st.executeQuery(SQLString);
-		  res.next();
-	
-			  
-			 int ID = res.getInt("ID") ;
-			 String Name = res.getString("Name") ;
-			 String Gender = res.getString("Gender");
-			 int Store = res.getInt("Store");
-			 String Department = res.getString("Department");
-			 String SearchItems = res.getString("SearchItems");
-			 String CustomerDescription = res.getString("CustomerDescription");
-			 Date DateTime = new Date();
-			 String Preselection = res.getString("Preselection");
-			 String BodyType = res.getString("BodyType");
-			 double Budget = res.getDouble("Budget");
-			 String Preferences = res.getString("Preferences");
-			 String Comments = res.getString("Comments");
-			 
-		  }
-		  catch (SQLException s){
-			  s.printStackTrace();
-		  System.out.println("SQL code does not execute.");
-		  }  
-		  catch (Exception e){
-		  e.printStackTrace();
-		  }
-		finally {
-		try {
-			con.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		}		
 
 		return new Customer[] {};
 	}
@@ -277,5 +233,5 @@ public class SQLRequests
 
 		return false;	
 	}
-	
+    
 }
