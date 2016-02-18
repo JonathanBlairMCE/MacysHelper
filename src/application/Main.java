@@ -41,7 +41,12 @@ public class Main extends Application {
         try{
             new BookAppointment().start(window);
         } catch (Exception e) {}
-        System.out.println("It's connected");
+    }
+    
+    public void goToEmployeeLogin() {
+        try{
+            new EmployeeLogin().start(window);
+        } catch (Exception e) {}
     }
 
 	@FXML
@@ -62,5 +67,10 @@ public class Main extends Application {
     @FXML
     void getHelp(ActionEvent event) {
     	goToBookAppointment();
+    }
+    
+    @FXML
+    void employeeLogin(ActionEvent event) {
+    	goToEmployeeLogin();
     }
 }

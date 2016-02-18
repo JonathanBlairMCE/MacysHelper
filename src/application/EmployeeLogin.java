@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class Template extends Application {
+public class EmployeeLogin extends Application {
 	
     static Stage window;
 
@@ -18,13 +18,13 @@ public class Template extends Application {
 		window = primaryStage;
 		
 	    // constructing our scene
-	    URL url = getClass().getResource("Template.fxml");
+	    URL url = getClass().getResource("EmployeeLogin.fxml");
 	    AnchorPane pane = FXMLLoader.load(url);
-	    Scene Template = new Scene(pane);
+	    Scene EmployeeLogin = new Scene(pane);
 	    
 	    // setting the stage
-	    window.setScene(Template);
-	    window.setTitle("Template");
+	    window.setScene(EmployeeLogin);
+	    window.setTitle("Employee Login");
 	    window.show();
 	}
 	

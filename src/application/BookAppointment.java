@@ -30,7 +30,13 @@ public class BookAppointment extends Application {
 		    FXCollections.observableArrayList(
 		    		"Male",
 		    		"Female"
-		    );	
+		    );
+	
+	ObservableList<String> floor = 
+		    FXCollections.observableArrayList(
+		    		"1",
+		    		"2"
+		    );
 		    		
 	ObservableList<String> times = 
 		    FXCollections.observableArrayList(
@@ -97,7 +103,7 @@ public class BookAppointment extends Application {
     private TextField tfName;
 
     @FXML
-    private ComboBox<?> ddFloor;
+    private ComboBox<String> ddFloor;
 
     @FXML
     private TextArea taSelfDescription;
@@ -134,6 +140,11 @@ public class BookAppointment extends Application {
 
     @FXML
     private ComboBox<?> ddBodyType;
+    
+	
+    public void initialize() {
+    	loadItems();
+    }
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -151,18 +162,18 @@ public class BookAppointment extends Application {
 	    window.show();
 	}
 	
-    public void initialize() {
-    	loadItems();
-    }
-	
 	public static void main(String[] args) {
 		launch(args);
 	}
 	
 	@FXML
 	public void loadItems() {
-		//ddGender.setItems(gender);
+		ddGender.setItems(gender);
 		ddTime.setItems(times);
+		
+		//int[] floors = SQLRequests.GetFloors(14);
+		//floor = FXCollections.observableArrayList(floors);
+		ddFloor.setItems(floor);
 	}
 	
     @FXML
@@ -174,8 +185,6 @@ public class BookAppointment extends Application {
     		lbDate.setVisible(true);
     		lbTime.setVisible(true);
     		tgPreselection.setSelected(false);
-    		
-    		ddTime.setItems(times);
     	}
     	else {
     		dtDate.setVisible(false);
@@ -196,7 +205,7 @@ public class BookAppointment extends Application {
     	
     	newCustomer.Name = tfName.getText();
     	newCustomer.Gender = (String) ddGender.getValue();
-    	newCustomer.Floor = (int) ddFloor.getValue();
+    	//newCustomer.Floor = (int) ddFloor.getValue();
     	newCustomer.Department = (String) ddDepartment.getValue();
     	newCustomer.SearchItems = taLookingFor.getText();
     	newCustomer.CustomerDescription = taSelfDescription.getText();
