@@ -7,6 +7,7 @@ public class SQLRequests
 	public static final String LOCATION_TABLE = "dbo.SLLNG_ZN";//selling zone table
 	public static Customer Customer_Customer = new Customer();
 	public static Customer Employee_Customer = new Customer();
+	public static String SQL_SERVER_CONNECTION_STRING = "jdbc:sqlserver://MT000XSSQL94;databaseName=SPManager;user=slfadmin;password=spmdadmin;";
 
 	public static Boolean ADSecurityAuthenticate(String password, String username)
 	{
