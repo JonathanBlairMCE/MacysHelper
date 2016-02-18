@@ -54,6 +54,13 @@ public class SQLRequests
 		}.start();
 	}
 
+	public static Boolean DoRefresh()
+	{
+		if (GetCustomerFromQueue(Customer_Customer.ID) != null && GetCustomerFromQueue(Customer_Customer.ID).ID != 0)
+			return false;
+		return true;
+	}
+
 	//done
 	public static Boolean Submission(Customer customer)
 	{
