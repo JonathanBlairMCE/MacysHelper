@@ -5,6 +5,7 @@ import application.Domain.StoreRow;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 
@@ -170,38 +171,35 @@ public class SQLRequests
 
 	public static Boolean SQLRequest(String SQLString)//1st: create the connection to
 	{
-		try
-        {
-			 Statement stm = null;
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            Connection con = DriverManager.getConnection(SQL_SERVER_CONNECTION_STRING);
-            stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM dbo.ANDREW_CustomerDB");
-            String[] result = new String[20];
-            if(rs!=null){
-                while (rs.next()){
-                    for(int i = 0; i <result.length ;i++)
-                    {
-                        for(int j = 0; j <result.length;j++)
-                        {
-                            result[j]=rs.getString(i);
-                        System.out.println(result[j]);
-                        }
-                    }
-                }
-            }
-
-            //String result = new result[20];
-
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-		finally {
-
-	    }
-
+		 Connection con = null;
+		  String url = "jdbc:sqlserver://MT000XSSQL94/";
+		  String db = "SPManager";
+		  String driver = "com.microsoft.sqlserver.jdbc";
+		  String user = "slfadmin";
+		  String pass = "spmdadmin";
+		  try{
+		  Class.forName(driver).newInstance();
+		  con = DriverManager.getConnection(url+db, user, pass);
+		  Statement st = con.createStatement();
+		  ResultSet res = st.executeQuery("SELECT * FROM dbo.ANDREW_CustomerDB");
+		  res.next();
+		  System.out.println(res.getString("Name"));
+		  //return res.getString("Name");
+		  con.close();
+		  }
+		  catch (SQLException s){
+			  s.printStackTrace();
+		  System.out.println("SQL code does not execute.");
+		  }  
+		  catch (Exception e){
+		  e.printStackTrace();
+		  }
+		//finally {
+		//con.close();
+		//}
+		 
 		return true;
+		
 	}
 
 
