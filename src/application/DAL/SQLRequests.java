@@ -2,6 +2,7 @@ package application.DAL;
 import application.Domain.Customer;
 import application.Domain.StoreRow;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -150,12 +151,42 @@ public class SQLRequests
 		return departments;*/
 	}
 
-	public static void GetStoreInfo(int ZL_DIV_NBR, int ZL_STR_NBR)
+	public static void GetStoreInfo(int ZL_DIV_NBR, int ZL_STR_NBR)//get the row info for the store and save the info
 	{
-		String SQLString = "SELECT DISTINCT ZN_NAME, [FLR_NBR] FROM [SPManager].[dbo].[SLLNG_ZN] WHERE ZL_STORE_NBR = " + ZL_STR_NBR + " AND ZL_DIVN_NBR = "+ZL_DIV_NBR+" ORDER BY FLR_NBR";
+		String SQLString = "SELECT DISTINCT ZN_NAME, [FLR_NBR] FROM [SPManager].[dbo].[SLLNG_ZN] WHERE ZL_STORE_NBR = " + ZL_STR_NBR
+				+ " AND ZL_DIVN_NBR = "+ZL_DIV_NBR+" ORDER BY FLR_NBR";
+    	
+    	 String SQL_SERVER_CONNECTION_STRING = "jdbc:sqlserver://MT000XSSQL94;databaseName=SPManager;user=slfadmin;password=spmdadmin;";
+		 Connection con = null; 
+		 String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+		  try{
+		  Class.forName(driver).newInstance();
+		  con = DriverManager.getConnection(SQL_SERVER_CONNECTION_STRING);
+		  Statement st = con.createStatement();
+		  ResultSet res = st.executeQuery(SQLString);
+		  
+		  Array zoneName = res.getArray("ZN_NAME");
+		  Array floorNumber = res.getArray("FLR_NBR");
+		  
+		  //System.out.println(res.getString("ZN_NAME") + res.getString("FLR_NBR"));
+		  //StoreInfo="";
 
-
-		//StoreInfo =
+		  }
+		  catch (SQLException s){
+			  s.printStackTrace();
+		  System.out.println("SQL code does not execute.");
+		  }  
+		  catch (Exception e){
+		  e.printStackTrace();
+		  }
+		finally {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
 	}
 
 	public static void SaveInputFields()
