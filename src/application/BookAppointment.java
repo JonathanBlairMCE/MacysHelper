@@ -272,7 +272,7 @@ public class BookAppointment extends Application {
     @FXML
     void bookAppointment(ActionEvent event) {
     	Customer newCustomer = new Customer();
-    	
+    	/*
     	newCustomer.Name = tfName.getText();
     	newCustomer.Gender = (String) ddGender.getValue();
     	//newCustomer.Floor = (int) ddFloor.getValue();
@@ -280,6 +280,7 @@ public class BookAppointment extends Application {
     	newCustomer.Department = (String) ddDepartment.getValue();
     	newCustomer.SearchItems = taLookingFor.getText();
     	newCustomer.CustomerDescription = taSelfDescription.getText();
+    	*/
     	
     	if (!(tgAppointment.isSelected())) {
     		SQLRequests.Submission(newCustomer);

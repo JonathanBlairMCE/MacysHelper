@@ -4,17 +4,17 @@ import java.util.Date;
 public class Customer
 {
 	public int ID = 0;
-	public String Name = "";
-	public String Gender = "";
+	public String Name = "Alex";
+	public String Gender = "Male";
 	public int Store = 14;
-	public String Department = "";
-	public int Floor = 0;
-	public String SearchItems = "";
-	public String CustomerDescription = "";
+	public String Department = "Mens";
+	public int Floor = 1;
+	public String SearchItems = "indwaiod";
+	public String CustomerDescription = "Tall";
 	public Date DateTime = new Date();
 	public int Preselection = 0;
-	public String BodyType = "";
-	public double Budget = 0.0;
-	public String Preferences = "";
-	public String Comments = "";
+	public String BodyType = "Tall";
+	public double Budget = 100.0;
+	public String Preferences = "dwad";
+	public String Comments = "dwad";
 }
