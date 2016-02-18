@@ -22,8 +22,6 @@ public class SQLRequests
 		return true;
 	}
 
-
-
 	//done
 	public static Boolean Submission(Customer customer)
 	{
@@ -56,14 +54,6 @@ public class SQLRequests
 		String SQLString = "";
 		SQLString = "DELETE FROM " + TABLE_NAME + " WHERE ID = " + Cust_ID;
 		return SQLRequest(SQLString);
-	}
-
-	//TODO
-	public static void LoadQueue()
-	{
-		String SQLString = "SELECT * FROM " + TABLE_NAME;
-
-		Queue = new Customer[] {};
 	}
 
 	//done
@@ -101,10 +91,12 @@ public class SQLRequests
 
 	}
 
-	public static Customer[] GetCustomersSQL()//2nd
+	public static void LoadQueue()//2nd
 	{
+		String SQLString = "SELECT * FROM " + TABLE_NAME;
 
-		return new Customer[] {};
+		//Queue = GetCustomersSQL();
+		//return new Customer[] {};
 	}
 
 	public static Boolean SQLRequest(String SQLString)//1st: create the connection to
