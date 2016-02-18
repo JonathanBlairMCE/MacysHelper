@@ -110,9 +110,12 @@ public class SQLRequests
 
 	public static int[] GetFloors(int store)
 	{
+		return new int[]{0,1,2,3};
+		/*
 		if (StoreInfo == null || StoreInfo.length == 0)
-			GetStoreInfo(71, 3);
+			GetStoreInfo(71, store);
 		int[] floors = new int[StoreInfo.length];
+		int currentFloor = 0;
 		for (int i = 0; i < StoreInfo.length; i++)
 		{
 			Boolean alreadyIn = false;
@@ -123,14 +126,18 @@ public class SQLRequests
 					break;
 				}
 			if (!alreadyIn)
-				floors[i] = StoreInfo[i].floor;
+			{
+				floors[currentFloor] = StoreInfo[i].floor;
+				currentFloor++;
+			}
 		}
-		return new int[] {0,1,2};
-		//return floors;
+		return floors;*/
 	}
 
 	public static String[] GetDepartments(int floor)//get the Departments from the JSON file
 	{
+		return new String[] {"Mens Suits", "Womens Shoes", "Children"};
+		/*
 		if (StoreInfo == null || StoreInfo.length == 0)
 			GetStoreInfo(71, 3);
 		String[] departments = new String[StoreInfo.length];
@@ -139,8 +146,7 @@ public class SQLRequests
 			if (StoreInfo[i].floor == floor)
 				departments[i] = StoreInfo[i].department;
 		}
-		return new String[] {"Mens Suits", "Womens Shoes", "Children"};
-		//return departments;
+		return departments;*/
 	}
 
 	public static void GetStoreInfo(int ZL_DIV_NBR, int ZL_STR_NBR)
