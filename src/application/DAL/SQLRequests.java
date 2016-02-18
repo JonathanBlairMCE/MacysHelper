@@ -1,6 +1,9 @@
 package application.DAL;
 import application.Domain.Customer;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class SQLRequests
 {
@@ -47,7 +50,7 @@ public class SQLRequests
 		return SQLRequest(SQLString);
 	}
 
-	public static Customer[] LoadQueue()
+	public static Customer[] LoadQueue()//copy the queue into a new object so that data will not be lost when refresh happens
 	{
 
 		return new Customer[] {};
@@ -68,13 +71,13 @@ public class SQLRequests
 		return new Customer();
 	}
 
-	public static int[] GetFloors(int store)
+	public static int[] GetFloors(int store)//get the floors from the JSON file
 	{
 
 		return new int[] {};
 	}
 
-	public static String[] GetDepartments()
+	public static String[] GetDepartments()//get the Departments from the JSON file 
 	{
 
 		return new String[]{};
@@ -93,6 +96,37 @@ public class SQLRequests
 
 	public static Boolean SQLRequest(String SQLString)//1st: create the connection to
 	{
+		try
+        {	
+			 Statement stm = null;
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Connection con = DriverManager.getConnection(SQL_SERVER_CONNECTION_STRING);
+            stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM dbo.ANDREW_CustomerDB");
+            String[] result = new String[20];
+            if(rs!=null){
+                while (rs.next()){
+                    for(int i = 0; i <result.length ;i++)
+                    {
+                        for(int j = 0; j <result.length;j++)
+                        {
+                            result[j]=rs.getString(i);
+                        System.out.println(result[j]);
+                        }
+                    }
+                }
+            }
+
+            //String result = new result[20];
+
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+		finally {
+			
+	    }
+
 		
 		return true;
 	}
