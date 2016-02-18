@@ -58,12 +58,8 @@ public class SQLRequests
 		return SQLRequest(SQLString);
 	}
 
-<<<<<<< HEAD
-	public static Customer[] LoadQueue()//copy the queue into a new object so that data will not be lost when refresh happens
-=======
 	//TODO
 	public static void LoadQueue()
->>>>>>> origin/master
 	{
 		String SQLString = "SELECT * FROM " + TABLE_NAME;
 
@@ -88,18 +84,13 @@ public class SQLRequests
 		return new Customer();
 	}
 
-<<<<<<< HEAD
-	public static int[] GetFloors(int store)//get the floors from the JSON file
-=======
-	//TODO
 	public static int[] GetFloors(int store)
->>>>>>> origin/master
 	{
 
 		return new int[] {};
 	}
 
-	public static String[] GetDepartments()//get the Departments from the JSON file 
+	public static String[] GetDepartments()//get the Departments from the JSON file
 	{
 
 		return new String[]{};
@@ -118,9 +109,8 @@ public class SQLRequests
 
 	public static Boolean SQLRequest(String SQLString)//1st: create the connection to
 	{
-<<<<<<< HEAD
 		try
-        {	
+        {
 			 Statement stm = null;
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             Connection con = DriverManager.getConnection(SQL_SERVER_CONNECTION_STRING);
@@ -147,13 +137,9 @@ public class SQLRequests
             e.printStackTrace();
         }
 		finally {
-			
+
 	    }
 
-		
-=======
-
->>>>>>> origin/master
 		return true;
 	}
 
