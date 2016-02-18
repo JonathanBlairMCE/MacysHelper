@@ -3,7 +3,8 @@ import application.Domain.Customer;
 
 public class SQLRequests
 {
-	public static final String TABLE_NAME = "ANDREW_Cust";
+	public static final String TABLE_NAME = "dbo.ANDREW_CustomerDB"; //customer table 
+	public static final String LOCATION_TABLE = "dbo.SLLNG_ZN";//selling zone table
 	public static Customer Customer_Customer = new Customer();
 	public static Customer Employee_Customer = new Customer();
 
@@ -65,13 +66,13 @@ public class SQLRequests
 
 	}
 
-	public static Customer[] GetCustomersSQL()
+	public static Customer[] GetCustomersSQL()//2nd
 	{
 
 		return new Customer[] {};
 	}
 
-	public static Boolean SQLRequest(String SQLString)
+	public static Boolean SQLRequest(String SQLString)//1st: create the connection to  
 	{
 
 		return true;
