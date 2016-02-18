@@ -1,5 +1,6 @@
 package application.DAL;
 import application.Domain.Customer;
+import java.sql.Connection;
 
 public class SQLRequests
 {
@@ -92,7 +93,7 @@ public class SQLRequests
 
 	public static Boolean SQLRequest(String SQLString)//1st: create the connection to
 	{
-
+		
 		return true;
 	}
 
