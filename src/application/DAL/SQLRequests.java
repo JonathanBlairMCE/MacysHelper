@@ -31,7 +31,6 @@ public class SQLRequests
 
 	public static void StartEmployeeLogic()
 	{
-		Submission(new Customer());
 		new Thread(){
 			@Override
 			public void run() {
@@ -251,6 +250,7 @@ public class SQLRequests
 				Queue[i].Budget = res.getDouble("Budget");
 				Queue[i].Preferences = res.getString("Preferences");
 				Queue[i].Comments = res.getString("Comments");
+				i++;
 			}
 		}
 		catch (SQLException s){
