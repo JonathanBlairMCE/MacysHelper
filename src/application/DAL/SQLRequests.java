@@ -4,8 +4,8 @@ import application.Domain.Customer;
 public class SQLRequests
 {
 	public static final String TABLE_NAME = "ANDREW_Cust";
-	public static Customer RequestedCustomer = new Customer();
-	public static Customer SubmittedCustomer = new Customer();
+	public static Customer Customer_Customer = new Customer();
+	public static Customer Employee_Customer = new Customer();
 
 	public static Boolean ADSecurityAuthenticate(String password, String username)
 	{
@@ -14,6 +14,7 @@ public class SQLRequests
 
 	public static Boolean Submission(Customer customer)
 	{
+		Customer_Customer = customer;
 		String SQLString = "";
 		SQLString = "INSERT INTO " + TABLE_NAME +  " (Name, Gender, Store, Floor, Department, SearchItems, CustomerDescription, DateTime, Preselection, BodyType, Budget, Preferences, Comments) ";
 		SQLString = SQLString + "VALUES (" +
@@ -50,7 +51,7 @@ public class SQLRequests
 
 	public static Boolean CancelAppointment()
 	{
-		return Accept(SubmittedCustomer.ID);
+		return Accept(Customer_Customer.ID);
 	}
 
 	public static Customer FullApptDetails(int Cust_ID)
