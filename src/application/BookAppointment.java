@@ -1,6 +1,5 @@
 package application;
 
-import application.*;
 import java.util.Date;
 import application.DAL.*;
 import application.Domain.*;
@@ -17,7 +16,6 @@ import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -39,6 +37,8 @@ public class BookAppointment extends Application {
 		    		"1",
 		    		"2"
 		    );
+		    
+	//ObservableList<int[]> floor;
 	
 	ObservableList<String> dpts = 
 		    FXCollections.observableArrayList(
@@ -301,6 +301,10 @@ public class BookAppointment extends Application {
     		
     		SQLRequests.Submission(newCustomer);
     	}
+    	
+    	try{
+            new Waiting().start(window);
+        } catch (Exception e) {}
     }
 
     @FXML

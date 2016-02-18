@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
@@ -32,5 +33,6 @@
          </font>
       </Label>
       <ScrollPane layoutX="24.0" layoutY="251.0" prefHeight="370.0" prefWidth="312.0" />
+      <ImageView fx:id="imageView" fitHeight="90.0" fitWidth="160.0" layoutX="91.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

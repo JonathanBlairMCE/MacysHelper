@@ -8,20 +8,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class Queue extends Application {
+public class Waiting extends Application {
 	
     static Stage window;
     
     @FXML
-    private Button btLogout;
-    
-    @FXML
-    private ImageView imageView;
+    private Button bReturn;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -29,28 +24,23 @@ public class Queue extends Application {
 		window = primaryStage;
 		
 	    // constructing our scene
-	    URL url = getClass().getResource("Queue.fxml");
+	    URL url = getClass().getResource("Waiting.fxml");
 	    AnchorPane pane = FXMLLoader.load(url);
-	    Scene Queue = new Scene(pane);
+	    Scene Waiting = new Scene(pane);
 	    
 	    // setting the stage
-	    window.setScene(Queue);
-	    window.setTitle("Queue");
+	    window.setScene(Waiting);
+	    window.setTitle("Waiting");
 	    window.show();
 	}
 	
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
-	public void initialize() {
-		Image Alex = new Image("application/Assets/20160217_115431.jpg");
-    	imageView.setImage(Alex);
-    }
-	
-	@FXML
-    void logout(ActionEvent event) {
-		try{
+
+    @FXML
+    void returnHome(ActionEvent event) {
+    	try{
             new Main().start(window);
         } catch (Exception e) {}
     }
