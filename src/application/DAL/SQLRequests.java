@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 
 
 public class SQLRequests
@@ -19,7 +20,7 @@ public class SQLRequests
 	public static Customer Employee_Customer = new Customer();
 	public static Boolean isEmployee = false;
 	public static final String SQL_SERVER_CONNECTION_STRING = "jdbc:sqlserver://MT000XSSQL94;databaseName=SPManager;user=slfadmin;password=spmdadmin;";
-	public static Customer[] Queue = new Customer[]{};
+	public static Customer[] Queue = new Customer[1000];
 	public static StoreRow[] StoreInfo = new StoreRow[]{};
 
 	//done
@@ -40,6 +41,8 @@ public class SQLRequests
 						LoadQueue();
 						System.out.println("LoadedQueue");
 						Thread.sleep(3000);
+						Customer acust = Queue[0];
+						System.out.println("Name" + acust.Name);
 					}
 					catch (Exception ex)
 					{
@@ -87,9 +90,7 @@ public class SQLRequests
 	//TODO
 	public static void LoadQueue()
 	{
-		String SQLString = "SELECT * FROM " + TABLE_NAME;
-
-		Queue = new Customer[] {};
+		GetCustomersSQL();
 	}
 
 	//done
@@ -209,6 +210,54 @@ public class SQLRequests
 
 	public static Customer[] GetCustomersSQL()//2nd populate rows with the customer data
 	{
+		String SQLString = "SELECT * FROM" + TABLE_NAME;
+
+		String SQL_SERVER_CONNECTION_STRING = "jdbc:sqlserver://MT000XSSQL94;databaseName=SPManager;user=slfadmin;password=spmdadmin;";
+		Connection con = null;
+		String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+		try
+		{
+			Class.forName(driver).newInstance();
+			con = DriverManager.getConnection(SQL_SERVER_CONNECTION_STRING);
+			Statement st = con.createStatement();
+			ResultSet res = st.executeQuery(SQLString);
+
+			int i = 0;
+			while (res.next())
+			{
+
+				Queue[i] = new Customer();
+				System.out.println("Test");
+				Queue[i].ID = res.getInt("ID") ;
+				Queue[i].Name = res.getString("Name") ;
+				Queue[i].Gender = res.getString("Gender");
+				Queue[i].Store = res.getInt("Store");
+				Queue[i].Department = res.getString("Department");
+				Queue[i].SearchItems = res.getString("SearchItems");
+				Queue[i].CustomerDescription = res.getString("CustomerDescription");
+				Queue[i].DateTime = new Date();
+				Queue[i].Preselection = res.getBoolean("Preselection");
+				Queue[i].BodyType = res.getString("BodyType");
+				Queue[i].Budget = res.getDouble("Budget");
+				Queue[i].Preferences = res.getString("Preferences");
+				Queue[i].Comments = res.getString("Comments");
+			}
+		}
+		catch (SQLException s){
+			s.printStackTrace();
+			System.out.println("SQL code does not execute.");
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 
 		return new Customer[] {};
 	}
