@@ -103,10 +103,9 @@ public class SQLRequests
 	{
 		try
         {
-			 Statement stm = null;
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             Connection con = DriverManager.getConnection(SQL_SERVER_CONNECTION_STRING);
-            stm = con.createStatement();
+            Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery("SELECT * FROM dbo.ANDREW_CustomerDB");
             String[] result = new String[20];
             if(rs!=null){
