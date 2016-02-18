@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-<<<<<<< HEAD
     static Stage window;
 	
 	@Override
@@ -25,17 +24,7 @@ public class Main extends Application {
 	    URL url = getClass().getResource("Index.fxml");
 	    AnchorPane pane = FXMLLoader.load(url);
 	    Scene Main = new Scene(pane);
-	    
-=======
-	@Override
-	public void start(Stage primaryStage) throws IOException {
 
-	    // constructing our scene
-	    URL url = getClass().getResource("Index.fxml");
-	    AnchorPane pane = FXMLLoader.load(url);
-	    Scene scene = new Scene(pane);
-
->>>>>>> origin/master
 	    // setting the stage
 	    window.setScene(Main);
 	    window.setTitle("Macys Helper");

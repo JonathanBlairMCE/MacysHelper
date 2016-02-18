@@ -81,6 +81,18 @@ public class BookAppointment extends Application {
 
     @FXML
     void futureAppointment(ActionEvent event) {
+    	if (tgPreselection.isPressed()) {
+    		dtDate.setVisible(true);
+    		tgPreselection.setVisible(true);
+    		ddTime.setVisible(true);
+    	}
+    	else {
+    		dtDate.setVisible(false);
+    		tgPreselection.setVisible(false);
+    		ddBodyType.setVisible(false);
+    		ddTime.setVisible(false);
+    		ddBudget.setVisible(false);
+    	}
 
     }
 
