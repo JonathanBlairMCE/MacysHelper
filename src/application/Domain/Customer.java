@@ -3,6 +3,7 @@ import java.util.Date;
 
 public class Customer
 {
+	public int ID = 0;
 	public String Name = "";
 	public String Gender = "";
 	public int Store = 14;
@@ -11,7 +12,7 @@ public class Customer
 	public String SearchItems = "";
 	public String CustomerDescription = "";
 	public Date DateTime = new Date();
-	public Boolean preselection = false;
+	public Boolean Preselection = false;
 	public String BodyType = "";
 	public double Budget = 0.0;
 	public String Preferences = "";

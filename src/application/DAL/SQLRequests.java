@@ -3,6 +3,10 @@ import application.Domain.Customer;
 
 public class SQLRequests
 {
+	public static final String TABLE_NAME = "ANDREW_Cust";
+	public static Customer RequestedCustomer = new Customer();
+	public static Customer SubmittedCustomer = new Customer();
+
 	public static Boolean ADSecurityAuthenticate(String password, String username)
 	{
 		return true;
@@ -10,14 +14,32 @@ public class SQLRequests
 
 	public static Boolean Submission(Customer customer)
 	{
+		String SQLString = "";
+		SQLString = "INSERT INTO " + TABLE_NAME +  " (Name, Gender, Store, Floor, Department, SearchItems, CustomerDescription, DateTime, Preselection, BodyType, Budget, Preferences, Comments) ";
+		SQLString = SQLString + "VALUES (" +
+				customer.Name + ", " +
+				customer.Gender + ", " +
+				customer.Store + ", " +
+				customer.Floor + ", " +
+				customer.Department + ", " +
+				customer.SearchItems + ", " +
+				customer.CustomerDescription + ", " +
+				customer.DateTime + ", " +
+				customer.Preselection + ", " +
+				customer.BodyType + ", " +
+				customer.Budget + ", " +
+				customer.Preferences + ", " +
+				customer.Comments +
+				");";
 
-		return true;
+		return SQLRequest(SQLString);
 	}
 
 	public static Boolean Accept(int Cust_ID)
 	{
-
-		return true;
+		String SQLString = "";
+		SQLString = "DELETE FROM " + TABLE_NAME + " WHERE ID = " + Cust_ID;
+		return SQLRequest(SQLString);
 	}
 
 	public static Customer[] LoadQueue()
@@ -28,8 +50,7 @@ public class SQLRequests
 
 	public static Boolean CancelAppointment()
 	{
-
-		return true;
+		return Accept(SubmittedCustomer.ID);
 	}
 
 	public static Customer FullApptDetails(int Cust_ID)
@@ -42,6 +63,17 @@ public class SQLRequests
 	{
 
 	}
+
+	public static Customer[] GetCustomersSQL()
+	{
+
+		return new Customer[] {};
+	}
+
+	public static Boolean SQLRequest(String SQLString)
+	{
+
+		return true;
 	}
 
 
