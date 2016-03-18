@@ -68,8 +68,8 @@
       </Label>
       <ComboBox fx:id="ddBudget" layoutX="129.0" layoutY="561.0" prefHeight="25.0" prefWidth="212.0" promptText="Budget" visible="false" visibleRowCount="5" />
       <Button fx:id="btSubmit" layoutX="19.0" layoutY="601.0" mnemonicParsing="false" onAction="#bookAppointment" prefHeight="25.0" prefWidth="322.0" text="Book Appointment" />
-      <ComboBox fx:id="ddDepartment" disable="true" layoutX="129.0" layoutY="159.0" prefHeight="25.0" prefWidth="212.0" promptText="Department" visibleRowCount="2" />
-      <ComboBox fx:id="ddBodyType" layoutX="129.0" layoutY="534.0" prefHeight="25.0" prefWidth="212.0" promptText="Budget" visible="false" visibleRowCount="5" />
+      <ComboBox fx:id="ddDepartment" disable="true" layoutX="129.0" layoutY="159.0" prefHeight="25.0" prefWidth="212.0" promptText="Department" visibleRowCount="5" />
+      <ComboBox fx:id="ddBodyType" layoutX="129.0" layoutY="534.0" prefHeight="25.0" prefWidth="212.0" promptText="Body Type" visible="false" visibleRowCount="5" />
       <Label fx:id="lbBodyType" layoutX="20.0" layoutY="533.0" prefHeight="27.0" prefWidth="100.0" text="Body Type:" textFill="RED" visible="false">
          <font>
             <Font size="18.0" />

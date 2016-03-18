@@ -21,6 +21,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.beans.binding.*;
 
 public class Queue extends Application {
 
@@ -92,5 +93,13 @@ public class Queue extends Application {
     	nameList.setItems(names);
     	desList.setItems(desc);
 	}
+
+	@FXML
+    void openCustomer(ActionEvent event)
+	{
+
+      		System.out.println("Inside");
+    }
+
 
 }

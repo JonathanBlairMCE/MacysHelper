@@ -44,8 +44,14 @@ public class BookAppointment extends Application {
 		    FXCollections.observableArrayList(
 		    		"Mens",
 		    		"Furniture",
-		    		"Womens",
-		    		"Fragrances"
+		    		"Womens Clothing",
+		    		"Fragrances",
+		    		"Childrens",
+		    		"Womens Shoes",
+		    		"Kitchen",
+		    		"Sephora",
+		    		"Last Act"
+
 		    );
 
 	ObservableList<String> hours =

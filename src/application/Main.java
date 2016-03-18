@@ -9,6 +9,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import application.DAL.*;
@@ -33,9 +35,12 @@ public class Main extends Application {
 //starts refresh queue task
 	}
 
+
 	public void initialize()
 	{
 		SQLRequests.StartEmployeeLogic();
+		Image Logo = new Image("application/Assets/macys_logo.png");
+	    imageView.setImage(Logo);
 	}
 
 	public static void main(String[] args) {
@@ -65,6 +70,9 @@ public class Main extends Application {
             new Queue().start(window);
         } catch (Exception e) {}
     }
+
+    @FXML
+    private ImageView imageView;
 
 	@FXML
     private TextField testTF;

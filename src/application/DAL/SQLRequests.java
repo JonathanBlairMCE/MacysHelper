@@ -39,10 +39,8 @@ public class SQLRequests
 					try
 					{
 						LoadQueue();
-						System.out.println("LoadedQueue");
 						Thread.sleep(3000);
 						Customer acust = Queue[1];
-						System.out.println("Name " + acust.Name);
 					}
 					catch (Exception ex)
 					{
@@ -236,7 +234,6 @@ public class SQLRequests
 			{
 
 				Queue[i] = new Customer();
-				System.out.println("Test");
 				Queue[i].ID = res.getInt("ID") ;
 				Queue[i].Name = res.getString("Name") ;
 				Queue[i].Gender = res.getString("Gender");

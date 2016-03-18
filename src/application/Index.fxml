@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
@@ -15,7 +16,7 @@
             <Font name="Calibri Bold" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="getHelpButton" alignment="CENTER" layoutX="132.0" layoutY="270.0" mnemonicParsing="false" onAction="#getHelp" style="-fx-background-color: RED; -fx-border-width: 1; -fx-border-color: BLACK;" text="Get Help" textAlignment="CENTER">
+      <Button fx:id="getHelpButton" alignment="CENTER" layoutX="132.0" layoutY="466.0" mnemonicParsing="false" onAction="#getHelp" style="-fx-background-color: RED; -fx-border-width: 1; -fx-border-color: BLACK;" text="Get Help" textAlignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>
@@ -25,5 +26,6 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <ImageView fx:id="imageView" fitHeight="252.0" fitWidth="210.0" layoutX="75.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
